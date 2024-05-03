@@ -1,0 +1,18 @@
+.content {
+  width: 100dvw;
+  height: 100dvh;
+  background-image: url("../../assets/img/bg.jpeg");
+  background-size: cover;
+  background-position: center;
+}
+
+.presentation {
+  font-size: 6vw;
+}
+
+#imagination {
+  background: linear-gradient(to right, #ff8a00, var(--third));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  user-select: none;
+}

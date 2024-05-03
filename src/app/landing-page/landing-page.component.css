@@ -1,0 +1,160 @@
+@keyframes dot {
+  0% {
+    opacity: 0;
+    transform: translateX(50%);
+  }
+  80% {
+    opacity: 1;
+    transform: translateX(-20%);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0%);
+  }
+}
+
+.circle {
+  border-radius: 50%;
+  background-color: white;
+  position: absolute;
+  z-index: 10;
+  pointer-events: none;
+  mix-blend-mode: difference;
+  transition: 0.1s !important;
+}
+
+.circle .dot {
+  width: 3px;
+  height: 3px;
+  background-color: var(--primary);
+  border-radius: 50%;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.welcome {
+  position: relative;
+  width: 100dvw;
+  height: 100dvh;
+  overflow: hidden;
+  background-color: var(--secondary);
+}
+
+.landing,
+.landing * {
+  cursor: none;
+  position: relative;
+}
+
+button {
+  background-color: rgba(131, 131, 131, 0.326);
+  border: 1px solid transparent;
+  border-radius: 40px;
+  font-size: 2dvh;
+  position: relative;
+  color: var(--primary);
+}
+
+button:hover {
+  background-color: transparent;
+  border: 1px solid var(--primary-darker);
+}
+
+.load {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  outline: 100dvw solid var(--primary);
+  z-index: 2;
+  cursor: none;
+}
+
+header {
+  z-index: 10;
+  background-color: transparent;
+}
+
+.elite {
+  top: 50%;
+  transform: translateY(-50%);
+  left: 2%;
+  z-index: 1;
+}
+
+.elite button {
+  font-size: 2.3dvh !important;
+}
+
+header h5 {
+  color: var(--primary);
+}
+
+header h5 .dot {
+  color: var(--third);
+  position: absolute;
+  animation: dot 0.4s;
+  animation-delay: 1s;
+}
+
+@keyframes showMenu {
+  from {
+    transform: translate(-100%, -50%);
+    opacity: 0;
+  }
+  to {
+    transform: translate(0% -50%);
+    opacity: 1;
+  }
+}
+
+.hide-menu {
+  top: 50%;
+  left: 10%;
+  transform: translate(0%, -50%);
+  left: 0;
+  animation: showMenu 0.6s;
+  cursor: none;
+  z-index: 9;
+}
+
+.hide-menu nav {
+  font-size: 2vw;
+  color: var(--secondary-darker);
+  font-family: "Zilla Slab", serif;
+  position: relative;
+}
+
+.hide-menu nav.active {
+  color: var(--secondary);
+}
+
+.hide-menu nav.active .bottom {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background-color: var(--secondary);
+}
+
+.hide-menu nav .bottom {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background-color: var(--secondary);
+  transition: width 0.3s ease-in-out, right 0.3s ease-in-out;
+}
+
+.hide-menu nav:hover .bottom {
+  width: 100%;
+  right: 0;
+}
+
+.hide-menu nav:hover {
+  color: var(--secondary);
+}

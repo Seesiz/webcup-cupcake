@@ -1,0 +1,97 @@
+<div
+  class="load"
+  [@loadAnimation]="load ? 'end' : 'start'"
+  (click)="navigateTo({ url: '' })"
+  (mouseenter)="onPress()"
+  (mouseleave)="onExit()"
+></div>
+<div class="landing">
+  <header
+    class="d-flex flex-row col-12 position-fixed justify-content-between align-items-center p-3 px-4 z-3"
+  >
+    <div class="col-1">
+      <button
+        class="px-2 p-1"
+        [style]="
+          load
+            ? 'color: var(--primary);'
+            : 'color: black; background: rgba(0, 0, 0, 0.177)'
+        "
+        (mouseenter)="onPress()"
+        (mouseleave)="onExit()"
+        (click)="navigateTo({ url: '' })"
+      >
+        {{ load ? "MENU" : "CLOSE X" }}
+      </button>
+    </div>
+    <h5
+      [style]="load ? 'color: var(--primary)' : 'color: black'"
+      class="position-relative journey"
+      (mouseenter)="onPress()"
+      (mouseleave)="onExit()"
+    >
+      JoURNE <span class="dot">&#x2022;</span>
+    </h5>
+    <button
+      class="px-2 p-1"
+      [style]="
+        load
+          ? 'color: var(--primary)'
+          : 'color: black; background: rgba(0, 0, 0, 0.177)'
+      "
+      (mouseenter)="onPress()"
+      (mouseleave)="onExit()"
+    >
+      GET STARTED
+    </button>
+  </header>
+  <div class="welcome">
+    <div
+      class="elite d-flex flex-column gap-2 position-absolute align-items-start"
+    >
+      <button
+        class="px-2 p-1"
+        (mouseenter)="onPress(); hoverShow('/home/feature')"
+        (mouseleave)="onExit(); hoverShow('/home/started')"
+      >
+        Feature
+      </button>
+      <button class="px-2 p-1" (mouseenter)="onPress()" (mouseleave)="onExit()">
+        Contact
+      </button>
+    </div>
+    <div class="" [style]="load ? 'scale: 1' : 'scale: 0.8'">
+      <router-outlet></router-outlet>
+    </div>
+    <div class="circle" [style]="boundsCircle" #circle>
+      <div class="dot"></div>
+    </div>
+  </div>
+</div>
+<div
+  class="hide-menu position-absolute d-flex align-items-center justify-content-between"
+  *ngIf="!load"
+>
+  <menu class="d-flex flex-column gap-2 align-items-start">
+    <nav (mouseenter)="onPress()" (mouseleave)="onExit()" [class.active]="true">
+      Home
+      <span class="bottom"></span>
+    </nav>
+    <nav
+      (mouseenter)="onPress()"
+      (mouseleave)="onExit()"
+      [class.active]="false"
+    >
+      Try our tools
+      <span class="bottom"></span>
+    </nav>
+    <nav
+      (mouseenter)="onPress()"
+      (mouseleave)="onExit()"
+      [class.active]="false"
+    >
+      Our team
+      <span class="bottom"></span>
+    </nav>
+  </menu>
+</div>
