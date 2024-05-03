@@ -1,9 +1,11 @@
 import { Component, ElementRef, ViewChild } from '@angular/core';
 import { TextService } from '../../Service/text.service';
+import { fadeInAnimation } from '../../start/start.component';
 @Component({
   selector: 'app-feature',
   templateUrl: './feature.component.html',
   styleUrl: './feature.component.css',
+  animations: [fadeInAnimation],
 })
 export class FeatureComponent {
   showText: boolean = false;

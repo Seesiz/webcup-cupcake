@@ -1,66 +1,66 @@
 <div
   class="load"
   [@loadAnimation]="load ? 'end' : 'start'"
-  (click)="navigateTo({ url: '' })"
-  (mouseenter)="onPress()"
-  (mouseleave)="onExit()"
-></div>
-<div class="landing">
-  <header
-    class="d-flex flex-row col-12 position-fixed justify-content-between align-items-center p-3 px-4 z-3"
+  (click)="navigateMenu()"
+  (mouseenter)="onPress(); enterOnde($event)"
+  (mouseleave)="onExit(); enterOnde($event)"
+>
+  <div
+    class="onde"
+    [style]="{ left: ondePosition.x, top: ondePosition.y }"
+    *ngIf="showOnde"
+    @ondeTransition
+    #onde
+  ></div>
+  <div
+    class="text position-absolute"
+    [@menuTransition]="load ? 'end' : 'start'"
   >
-    <div class="col-1">
-      <button
-        class="px-2 p-1"
-        [style]="
-          load
-            ? 'color: var(--primary);'
-            : 'color: black; background: rgba(0, 0, 0, 0.177)'
-        "
-        (mouseenter)="onPress()"
-        (mouseleave)="onExit()"
-        (click)="navigateTo({ url: '' })"
-      >
-        {{ load ? "MENU" : "CLOSE X" }}
-      </button>
-    </div>
-    <h5
-      [style]="load ? 'color: var(--primary)' : 'color: black'"
-      class="position-relative journey"
-      (mouseenter)="onPress()"
-      (mouseleave)="onExit()"
-    >
-      JoURNE <span class="dot">&#x2022;</span>
-    </h5>
+    <h1 class="fw-bold">MENU</h1>
+  </div>
+</div>
+<header
+  class="d-flex flex-row col-12 position-fixed justify-content-between align-items-center p-3 px-4 z-3"
+>
+  <div class="col-1">
     <button
       class="px-2 p-1"
       [style]="
         load
-          ? 'color: var(--primary)'
+          ? 'color: var(--primary);'
           : 'color: black; background: rgba(0, 0, 0, 0.177)'
       "
       (mouseenter)="onPress()"
       (mouseleave)="onExit()"
+      (click)="navigateMenu()"
     >
-      GET STARTED
+      {{ load ? "MENU" : "CLOSE X" }}
     </button>
-  </header>
+  </div>
+  <h5
+    [style]="load ? 'color: var(--primary)' : 'color: black'"
+    class="position-relative journey"
+    (mouseenter)="onPress()"
+    (mouseleave)="onExit()"
+  >
+    JoURNE <span class="dot">&#x2022;</span>
+  </h5>
+  <button
+    class="px-2 p-1"
+    [style]="
+      load
+        ? 'color: var(--primary)'
+        : 'color: black; background: rgba(0, 0, 0, 0.177)'
+    "
+    (mouseenter)="onPress()"
+    (mouseleave)="onExit()"
+  >
+    GET STARTED
+  </button>
+</header>
+<div class="landing">
   <div class="welcome">
-    <div
-      class="elite d-flex flex-column gap-2 position-absolute align-items-start"
-    >
-      <button
-        class="px-2 p-1"
-        (mouseenter)="onPress(); hoverShow('/home/feature')"
-        (mouseleave)="onExit(); hoverShow('/home/started')"
-      >
-        Feature
-      </button>
-      <button class="px-2 p-1" (mouseenter)="onPress()" (mouseleave)="onExit()">
-        Contact
-      </button>
-    </div>
-    <div class="" [style]="load ? 'scale: 1' : 'scale: 0.8'">
+    <div class="page" [style]="load ? 'scale: 1' : 'scale: 0.8'">
       <router-outlet></router-outlet>
     </div>
     <div class="circle" [style]="boundsCircle" #circle>
@@ -73,7 +73,12 @@
   *ngIf="!load"
 >
   <menu class="d-flex flex-column gap-2 align-items-start">
-    <nav (mouseenter)="onPress()" (mouseleave)="onExit()" [class.active]="true">
+    <nav
+      (mouseenter)="onPress(); hoverShowOn('/home/started')"
+      (mouseleave)="onExit(); hoverShowExit('/home/feature', '/home/started')"
+      (click)="navigate('/home/started'); makeShowText(); onExit()"
+      [class.active]="link === '/home/started'"
+    >
       Home
       <span class="bottom"></span>
     </nav>
@@ -86,12 +91,31 @@
       <span class="bottom"></span>
     </nav>
     <nav
-      (mouseenter)="onPress()"
-      (mouseleave)="onExit()"
-      [class.active]="false"
+      (mouseenter)="onPress(); hoverShowOn('/home/teams')"
+      (mouseleave)="onExit(); hoverShowExit('/home/started', '/home/teams')"
+      (click)="navigate('/home/teams'); makeShowText(); onExit()"
+      [class.active]="link === '/home/teams'"
     >
       Our team
       <span class="bottom"></span>
     </nav>
   </menu>
+</div>
+<div class="elite d-flex flex-column gap-2 position-absolute align-items-start">
+  <button
+    class="px-2 p-1"
+    (mouseenter)="onPress(); hoverShowOn('/home/started')"
+    (mouseleave)="onExit(); hoverShowExit('/home/feature', '/home/started')"
+    (click)="navigate('/home/started')"
+  >
+    Home
+  </button>
+  <button
+    class="px-2 p-1"
+    (mouseenter)="onPress(); hoverShowOn('/home/feature')"
+    (mouseleave)="onExit(); hoverShowExit('/home/started', '/home/feature')"
+    (click)="navigate('/home/feature')"
+  >
+    Feature
+  </button>
 </div>

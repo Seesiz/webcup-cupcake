@@ -8,7 +8,7 @@ import {
 import { Component } from '@angular/core';
 
 import { TextService } from '../Service/text.service';
-const fadeInAnimation = trigger('fadeInAnimation', [
+export const fadeInAnimation = trigger('fadeInAnimation', [
   transition(':enter', [
     animate(
       '0.5s',

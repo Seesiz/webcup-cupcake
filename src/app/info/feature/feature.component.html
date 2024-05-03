@@ -1,8 +1,15 @@
-<video #videoPlayer width="100%" height="100%" class="position-fixed" autoplay>
-  <source src="../../../assets/video/earth.mp4" type="video/mp4" />
-  Your browser does not support the video tag.
-</video>
-<div class="content d-flex justify-content-center align-items-center px-5">
-  <div class="presentation title" *ngIf="showText">Feature</div>
-  <div class="presentation title" *ngIf="showText">Feature</div>
+<div class="" @fadeInAnimation>
+  <video
+    #videoPlayer
+    width="100%"
+    height="100%"
+    class="position-fixed"
+    autoplay
+  >
+    <source src="../../../assets/video/earth.mp4" type="video/mp4" />
+    Your browser does not support the video tag.
+  </video>
+  <div class="content d-flex justify-content-center align-items-center px-5">
+    <div class="presentation title" *ngIf="showText">Feature</div>
+  </div>
 </div>

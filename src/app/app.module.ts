@@ -8,6 +8,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { StartComponent } from './start/start.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FeatureComponent } from './Info/feature/feature.component';
+import { TeamComponent } from './info/team/team.component';
 
 @NgModule({
   declarations: [
@@ -15,6 +16,7 @@ import { FeatureComponent } from './Info/feature/feature.component';
     LandingPageComponent,
     StartComponent,
     FeatureComponent,
+    TeamComponent,
   ],
   imports: [
     BrowserModule,

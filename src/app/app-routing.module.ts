@@ -4,6 +4,7 @@ import { AppComponent } from './app.component';
 import { StartComponent } from './start/start.component';
 import { RouterModule, Routes } from '@angular/router';
 import { FeatureComponent } from './Info/feature/feature.component';
+import { TeamComponent } from './info/team/team.component';
 
 const routes: Routes = [
   {
@@ -31,6 +32,10 @@ const routes: Routes = [
           {
             path: 'feature',
             component: FeatureComponent,
+          },
+          {
+            path: 'teams',
+            component: TeamComponent,
           },
         ],
       },

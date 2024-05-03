@@ -1,0 +1,146 @@
+.content {
+  width: 100dvw;
+  height: 100dvh;
+  position: relative;
+  padding: 5% 10%;
+  background-image: url("../../../assets/img/bg2.jpeg");
+  background-attachment: fixed;
+  background-size: cover;
+  background-position: center;
+  background-origin: padding-box;
+}
+
+@keyframes imageShow {
+  from {
+    height: 0%;
+  }
+  to {
+    height: 100%;
+  }
+}
+
+@keyframes moveCupCake {
+  0% {
+    transform: translateX(-70%) rotateZ(-30deg) translateY(0%);
+  }
+  50% {
+    transform: translateX(-65%) rotateZ(-30deg) translateY(-10%);
+  }
+  100% {
+    transform: translateX(-70%) rotateZ(-30deg) translateY(0%);
+  }
+}
+
+@keyframes moveCupCake2 {
+  0% {
+    transform: translateX(70%) rotateZ(30deg) translateY(0%);
+  }
+  50% {
+    transform: translateX(65%) rotateZ(30deg) translateY(-10%);
+  }
+  100% {
+    transform: translateX(70%) rotateZ(30deg) translateY(0%);
+  }
+}
+
+.image-div {
+  position: relative;
+  height: 100%;
+  z-index: 1;
+}
+
+.image {
+  height: 0%;
+  width: 100%;
+  background-origin: initial;
+  border-radius: 5px;
+  filter: grayscale(100%);
+  z-index: 1;
+  transition: 0.6s;
+}
+
+.image img {
+  opacity: 0;
+  position: absolute;
+}
+
+.image-div:hover {
+  z-index: 2;
+}
+
+.image-div:hover .image {
+  filter: grayscale(0%);
+  transform: scale(1.08);
+}
+
+.image-div:hover img,
+.image-div:hover .job {
+  opacity: 1;
+}
+
+.img1 {
+  left: 0;
+  top: 60%;
+  animation: moveCupCake 2s infinite ease;
+}
+
+.img2 {
+  top: 30%;
+  right: 0;
+  animation: moveCupCake2 2s infinite ease;
+}
+
+.image1 {
+  background-image: url("../../../assets/teams/nyaro.jpg");
+  background-position: center;
+  background-size: cover;
+  animation: imageShow 0.4s forwards;
+  animation-delay: 0.3s;
+}
+
+.image2 {
+  background-image: url("../../../assets/teams/fanantenana.jpg");
+  background-position: center;
+  background-size: cover;
+  animation: imageShow 0.4s forwards;
+  animation-delay: 0.6s;
+}
+
+.image3 {
+  background-image: url("../../../assets/teams/mialy.jpg");
+  background-position: center;
+  background-size: cover;
+  animation: imageShow 0.4s forwards;
+  animation-delay: 0.9s;
+}
+
+.image4 {
+  background-image: url("../../../assets/teams/hasina.jpg");
+  background-position: center;
+  background-size: cover;
+  animation: imageShow 0.4s forwards;
+  animation-delay: 1.2s;
+}
+
+.job {
+  opacity: 0;
+  backdrop-filter: blur(10px) brightness(50%);
+  color: var(--primary);
+  position: absolute;
+  padding: 1% 2%;
+  border-radius: 4px;
+  top: 2%;
+  left: 50%;
+  transform: translateX(-50%);
+  text-wrap: nowrap;
+}
+
+.name {
+  position: absolute;
+  bottom: 2%;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 5vh;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+  font-weight: 700;
+}
