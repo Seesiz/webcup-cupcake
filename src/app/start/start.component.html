@@ -1,20 +1,20 @@
 <div
-  class="content d-flex flex-column justify-content-center align-items-center py-2 px-5"
+  class="content d-flex flex-column justify-content-start align-items-center py-2 px-5"
   @fadeInAnimation
 >
   <video #videoPlayer class="position-absolute" autoplay loop>
-    <source
-      src="../../assets/video/7687086-hd_1920_1080_24fps.mp4"
-      type="video/mp4"
-    />
+    <source src="../../assets/video/fire_particule.mp4" type="video/mp4" />
     Your browser does not support the video tag.
   </video>
   <div class="text-center position-relative" *ngIf="showText" @fadeInAnimation>
     <b id="imagination">POWER </b>
-    <div class="plus-ultra">Plus ultra</div>
+    <div class="plus-ultra position-absolute">Plus ultra</div>
   </div>
-  <div class="info d-flex flex-row justify-content-between col-8">
+  <div
+    class="info d-flex flex-row justify-content-start col-8"
+    *ngIf="showText"
+    @fadeInAnimation
+  >
     <div class="col-3">Explore and unlock your powers.</div>
-    <div class="col-3"></div>
   </div>
 </div>
