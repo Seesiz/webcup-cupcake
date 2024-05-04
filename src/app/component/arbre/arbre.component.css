@@ -3,6 +3,7 @@
   height: 100dvh;
   display: flex;
   position: relative;
+  transition: box-shadow 200ms cubic-bezier(0, 0, 0.2, 1);
   /* cursor: move; */
 }
 
@@ -27,13 +28,19 @@
 }
 
 .line {
-  height: 10px;
-  background: linear-gradient(to right, var(--primary), var(--third));
+  height: 1px;
 }
 
 .description {
   position: absolute;
-  right: 0;
-  transform: translateX(100%);
+  left: 100%;
   background-color: var(--primary);
+  opacity: 0;
+  border-radius: 5px;
+  pointer-events: none;
+}
+
+.skill:hover .description {
+  opacity: 1;
+  pointer-events: all;
 }

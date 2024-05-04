@@ -13,7 +13,8 @@ import { LoginComponent } from './component/login/login.component';
 import { ArbreComponent } from './component/arbre/arbre.component';
 import { FormsModule } from '@angular/forms';
 import { TrocComponent } from './component/troc/troc.component';
-
+import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
+import { CdkDrag } from '@angular/cdk/drag-drop';
 @NgModule({
   declarations: [
     AppComponent,
@@ -30,9 +31,10 @@ import { TrocComponent } from './component/troc/troc.component';
     AppRoutingModule,
     NgbModule,
     BrowserAnimationsModule,
-    FormsModule
+    FormsModule,
+    CdkDrag,
   ],
-  providers: [],
+  providers: [provideAnimationsAsync()],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

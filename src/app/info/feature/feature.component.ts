@@ -11,7 +11,7 @@ export class FeatureComponent {
   showText: boolean = false;
   @ViewChild('videoPlayer') videoPlayer: ElementRef | undefined;
   ngOnInit(): void {
-    if (this.videoPlayer) this.videoPlayer.nativeElement.play(); // Démarre automatiquement la lecture
+    if (this.videoPlayer) this.videoPlayer.nativeElement.play();
   }
 
   constructor(private sharedService: TextService) {

@@ -9,4 +9,4 @@ import { StartComponent } from './start/start.component';
 })
 export class AppComponent {}
 
-export const baseUrl = 'https://cupcake.madagascar.webcup.hodi.host/backend';
+export const baseUrl = 'http://10.200.215.76:3000';
