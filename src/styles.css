@@ -7,7 +7,7 @@
 :root {
   --primary: #f7f7f8;
   --primary-darker: rgba(255, 255, 255, 0.482);
-  --secondary: #000000;
+  --secondary: #121212;
   --secondary-darker: #757575;
   --third: #ff2b2b;
 }
@@ -15,7 +15,6 @@
 * {
   font-family: "Red Hat Display", sans-serif;
   transition: 0.3s;
-  cursor: none !important;
 }
 
 .presentation,
@@ -35,4 +34,26 @@ body {
 
 ::-webkit-scrollbar {
   display: none;
+}
+
+.input {
+  border-radius: 40px;
+  border: none;
+  width: 100%;
+  padding: 2% 4%;
+  color: var(--secondary);
+}
+
+.btn-submit {
+  background-color: var(--secondary);
+  border: 1px solid transparent;
+  border-radius: 40px;
+  position: relative;
+  color: var(--primary);
+  width: 100%;
+}
+.btn-submit:hover {
+  background-color: var(--primary-darker);
+  border: 1px solid var(--primary-darker);
+  color: var(--secondary);
 }

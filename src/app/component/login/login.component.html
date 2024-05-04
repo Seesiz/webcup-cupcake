@@ -1,39 +1,25 @@
-<main>
-  <article>
-    <div class="left">
-      <img src="../../../assets/img/bg3.jpg" alt="" />
-    </div>
-    <div class="right">
-      <form>
-        <h1>Sign <span class="presentation">up</span></h1>
-        <div class="line">
-          <input
-            type="text"
-            #nom
-            name="nom"
-            placeholder="Name"
-            class="input"
-            required
-          />
-          <input
-            type="text"
-            #prenom
-            name="prenom"
-            placeholder="Lasname"
-            class="input"
-            required
-          />
-        </div>
-        <input type="email" #email placeholder="Email" class="input" required />
+<div class="content d-flex align-items-center justify-content-center">
+  <div
+    class="login col-6 col-lg-3 d-flex flex-row justify-content-center p-4 py-5"
+  >
+    <form class="d-flex flex-column gap-2 align-items-center col-12">
+      <h5 class="position-relative title text-center">
+        SoLO <span class="dot">&#x2022;</span> LEVELING
+      </h5>
+      <div class="col-12">
+        <input type="text" name="" id="" class="input" placeholder="Username" />
+      </div>
+      <div class="col-12">
         <input
           type="password"
-          #password
-          placeholder="password"
+          name=""
+          id=""
           class="input"
-          required
+          placeholder="Password"
         />
-        <button type="submit" class="button">Valider</button>
-      </form>
-    </div>
-  </article>
-</main>
+      </div>
+      <button class="btn-submit" type="submit">Submit</button>
+      <button class="btn-submit" type="button">Create an account</button>
+    </form>
+  </div>
+</div>
