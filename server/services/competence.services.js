@@ -27,7 +27,7 @@ const getSkillDerived = async () => {
         });
     
         // Retourner les compétences racine récupérées
-        return competenceDerive;
+        return competenceDerive.map((userSkill) => userSkill.dataValues);;
     } catch (error) {
         // Gérer les erreurs si la requête échoue
         console.error('Erreur lors de la récupération des compétences racine :', error);
@@ -46,7 +46,7 @@ const getUserSkill = async (userId, skillRouteId) => {
         });
     
         // Retourner les compétences de l'utilisateur
-        return userSkills;
+        return userSkills.map((userSkill) => userSkill.dataValues);
     } catch (error) {
         // Gérer les erreurs si la requête échoue
         console.error('Erreur lors de la récupération des compétences de l\'utilisateur :', error);
