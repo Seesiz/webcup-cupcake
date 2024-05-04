@@ -3,17 +3,22 @@
   height: 100dvh;
 }
 
-.presentation {
-  font-size: 12.2vh;
-}
-
 #imagination {
   background: linear-gradient(to right, #ff0000, var(--third));
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   user-select: none;
   font-size: 20vw;
+  position: relative;
 }
 .info {
+  color: var(--primary);
+}
+
+.plus-ultra {
+  font-family: "Water Brush", cursive;
+  bottom: 0;
+  right: 0;
+  font-size: 8vw;
   color: var(--primary);
 }
