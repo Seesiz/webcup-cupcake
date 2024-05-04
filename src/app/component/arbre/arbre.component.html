@@ -1,20 +1,19 @@
 <div class="pert-container" style="overflow: hidden">
-  <svg class="pert-svg" style="overflow: hidden">
-    <g *ngFor="let line of dependencies">
-      <line
-        [attr.x1]="tasks[line.from].x"
-        [attr.y1]="tasks[line.from].y"
-        [attr.x2]="tasks[line.to].x"
-        [attr.y2]="tasks[line.to].y"
-        style="stroke: rgb(255, 255, 255); stroke-width: 2"
-      ></line>
-    </g>
-  </svg>
+  <div
+    class="pert-svg"
+    style="overflow: hidden"
+    *ngFor="let line of dependencies"
+  >
+    <div class="line" [style]="getLineStyle(line)"></div>
+  </div>
   <div
     *ngFor="let task of tasks"
     class="skill position-absolute p-1"
     [style]="{ left: task.x + 'px', top: task.y + 'px' }"
   >
+    <div class="description">
+      <h4>{{ task.title }}</h4>
+    </div>
     <div class="icon d-flex align-items-center">
       <img src="../../../assets/img/feu.gif" alt="" width="100%" class="mb-1" />
     </div>

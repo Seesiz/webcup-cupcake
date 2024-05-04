@@ -1,4 +1,10 @@
-import { Component, Injectable, OnInit } from '@angular/core';
+import {
+  AfterViewChecked,
+  AfterViewInit,
+  Component,
+  Injectable,
+  OnInit,
+} from '@angular/core';
 import axios from 'axios';
 import { baseUrl } from '../../app.component';
 
@@ -15,7 +21,7 @@ interface Skill {
   templateUrl: './arbre.component.html',
   styleUrls: ['./arbre.component.css'],
 })
-export class ArbreComponent implements OnInit {
+export class ArbreComponent implements AfterViewInit {
   tasks: any[] = [];
   isDragging: boolean = false;
   dragStartX: number = 0;
@@ -25,7 +31,7 @@ export class ArbreComponent implements OnInit {
   data: any[] = [];
   idUser: number = 1;
 
-  async ngOnInit() {
+  async ngAfterViewInit() {
     await this.getArbre();
     this.setTask();
   }
@@ -78,5 +84,21 @@ export class ArbreComponent implements OnInit {
 
   getId() {
     return 1;
+  }
+
+  getLineStyle(line: any): any {
+    const deltaX = this.tasks[line.to].x - this.tasks[line.from].x;
+    const deltaY = this.tasks[line.to].y - this.tasks[line.from].y;
+    const length = Math.sqrt(deltaX * deltaX + deltaY * deltaY);
+    const angle = Math.atan2(deltaY, deltaX) * (180 / Math.PI);
+
+    return {
+      width: length + 'px',
+      transform: 'rotate(' + angle + 'deg)',
+      position: 'absolute',
+      top: this.tasks[line.from].y + 25 + 'px',
+      left: this.tasks[line.from].x + 25 + 'px',
+      transformOrigin: '0 0',
+    };
   }
 }
