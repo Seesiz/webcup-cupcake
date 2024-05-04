@@ -8,6 +8,7 @@
   background-size: cover;
   background-position: center;
   background-origin: padding-box;
+  overflow-y: auto;
 }
 
 @keyframes imageShow {

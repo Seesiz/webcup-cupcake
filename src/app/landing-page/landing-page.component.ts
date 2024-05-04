@@ -9,6 +9,7 @@ import {
 import { AfterViewInit, Component, ElementRef, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
 import { TextService } from '../Service/text.service';
+import { MouseService } from '../Service/mouse.service';
 
 const load = trigger('loadAnimation', [
   state(
@@ -104,9 +105,27 @@ export class LandingPageComponent implements AfterViewInit {
   @ViewChild('circle') circleRef: ElementRef | undefined;
   showText: boolean = false;
 
-  constructor(private router: Router, private sharedService: TextService) {
+  constructor(
+    private router: Router,
+    private sharedService: TextService,
+    private mouseService: MouseService
+  ) {
     this.sharedService.showText$.subscribe((value) => {
       this.showText = value;
+    });
+  }
+
+  ngOnInit(): void {
+    this.mouseService.onEnter().subscribe(() => {
+      this.onEnter();
+    });
+
+    this.mouseService.onExit().subscribe(() => {
+      this.onExit();
+    });
+
+    this.mouseService.onPress().subscribe(() => {
+      this.onPress();
     });
   }
 
