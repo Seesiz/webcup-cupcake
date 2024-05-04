@@ -1,35 +1,27 @@
-<div class="pert-container" 
-(mousedown)="onMouseDown($event)" 
-(mousemove)="onMouseMove($event)" 
-(mouseup)="onMouseUp($event)">
-  <svg class="pert-svg">
-    <line
-      *ngFor="let dependency of dependencies"
-      [attr.x1]="tasks[dependency.from - 1].x"
-      [attr.y1]="tasks[dependency.from - 1].y"
-      [attr.x2]="tasks[dependency.to - 1].x"
-      [attr.y2]="tasks[dependency.to - 1].y"
-      class="pert-line"
-    ></line>
-
-    <circle
-      *ngFor="let task of tasks"
-      [attr.cx]="task.x"
-      [attr.cy]="task.y"
-      r="40"
-      class="pert-circle"
-    ></circle>
-
-    <text
-      *ngFor="let task of tasks; let i = index"
-      [attr.x]="task.x"
-      [attr.y]="task.y"
-      alignment-baseline="middle"
-      text-anchor="middle"
-      fill="black"
-      class="pert-text"
-    >
-      {{ texts[i].text }}
-    </text>
+<div
+  class="pert-container"
+  style="overflow: hidden"
+  (mousedown)="onMouseDown($event)"
+  (mousemove)="onMouseMove($event)"
+  (mouseup)="onMouseUp($event)"
+>
+  <svg class="pert-svg" style="overflow: hidden">
+    <g *ngFor="let task of tasks">
+      <circle
+        [attr.cx]="task.x"
+        [attr.cy]="task.y"
+        r="40"
+        class="pert-circle"
+      ></circle>
+      <text
+        [attr.x]="task.x"
+        [attr.y]="task.y"
+        text-anchor="middle"
+        alignment-baseline="middle"
+        class="pert-text"
+      >
+        {{ task.text }}
+      </text>
+    </g>
   </svg>
 </div>

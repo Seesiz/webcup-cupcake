@@ -1,13 +1,11 @@
 import { Component, Injectable, OnInit } from '@angular/core';
+import axios from 'axios';
+import { baseUrl } from '../../app.component';
 
-interface Task {
+interface Skill {
   id: number;
-  x?: number;
-  y?: number;
-}
-interface Text {
-  text: string;
-  id: number;
+  title: string;
+  parents: number[];
 }
 @Injectable({
   providedIn: 'root',
@@ -18,15 +16,18 @@ interface Text {
   styleUrls: ['./arbre.component.css'],
 })
 export class ArbreComponent implements OnInit {
-  tasks: Task[] = [];
+  tasks: any[] = [];
   isDragging: boolean = false;
   dragStartX: number = 0;
   dragStartY: number = 0;
   dragOffsetX: number = 0;
   dragOffsetY: number = 0;
+  data: any[] = [];
+  idUser: number = 1;
 
-  ngOnInit() {
+  async ngOnInit() {
     this.setTask();
+    await this.getArbre();
   }
 
   onMouseDown(event: MouseEvent) {
@@ -66,14 +67,6 @@ export class ArbreComponent implements OnInit {
     // { from: 1, to: 4 },
   ];
 
-  texts = [
-    { text: 'Eau', id: 1 },
-    { text: 'Feu', id: 2 },
-    { text: 'Air', id: 3 },
-    { text: 'Terre', id: 4 },
-    // { text: 'centre', id: 5 },
-  ];
-
   setTask() {
     const center = this.showSetCenter();
     if (center) {
@@ -84,21 +77,25 @@ export class ArbreComponent implements OnInit {
           id: 1,
           x: center.width + center.left - center.right / 2,
           y: center.height + center.top - +center.bottom / 2 + 200,
+          text: 'Eau',
         },
         {
           id: 2,
           x: center.width + center.left - center.right / 2 + 200,
           y: center.height + center.top - +center.bottom / 2,
+          text: 'Feu',
         },
         {
           id: 3,
           x: center.width + center.left - center.right / 2 - 200,
           y: center.height + center.top - +center.bottom / 2,
+          text: 'Air',
         },
         {
           id: 4,
           x: center.width + center.left - center.right / 2,
           y: center.height + center.top - +center.bottom / 2 - 200,
+          text: 'Terre',
         },
         // {
         //   id: 5,
@@ -118,4 +115,20 @@ export class ArbreComponent implements OnInit {
     }
     return;
   }
+
+  async getArbre() {
+    try {
+      const resp = await axios.get(`${baseUrl}/skill/user/${this.idUser}`);
+      this.data = resp.data;
+      console.log(this.data);
+    } catch (error) {
+      alert(error);
+    }
+  }
+
+  getId() {
+    return 1;
+  }
+
+  buildTree() {}
 }
