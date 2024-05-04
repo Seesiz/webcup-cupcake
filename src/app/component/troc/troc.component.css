@@ -23,22 +23,37 @@ main video {
   padding: 10px 15px;
   color: white;
   display: flex;
-  width: 40%;
+  width: 70%;
   border: 1px solid #fff;
+  justify-content: space-around;
+  gap: 100px;
 }
-.pic img {
-  width: 10vw;
-  position: absolute;
+.pics {
+  width: 50%;
+  border: 5px solid #fff;
 }
-.title {
-  flex: 1;
-}
-.pic {
-  flex: 1;
-}
-.elements {
-  flex: 1;
+.give {
   display: flex;
-  flex-wrap: wrap;
+  gap: 10px;
+  /* background-color: rgb(255, 0, 230); */
+  border-right: 2px solid #fff;
 }
-.suggestion
+.need {
+  display: flex;
+  gap: 10px;
+  /* background-color: aqua; */
+  justify-content: right;
+  border-left: 2px solid #fff;
+}
+.need .text {
+  text-align: right;
+}
+.text {
+  width: 40%;
+  /* background-color: aqua; */
+}
+.separator {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
