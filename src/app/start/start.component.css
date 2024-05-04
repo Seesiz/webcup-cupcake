@@ -1,9 +1,6 @@
 .content {
   width: 100dvw;
   height: 100dvh;
-  background-image: url("../../assets/img/bg.jpeg");
-  background-size: cover;
-  background-position: center;
 }
 
 .presentation {
@@ -11,8 +8,12 @@
 }
 
 #imagination {
-  background: linear-gradient(to right, #ff8a00, var(--third));
+  background: linear-gradient(to right, #ff0000, var(--third));
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   user-select: none;
+  font-size: 20vw;
+}
+.info {
+  color: var(--primary);
 }

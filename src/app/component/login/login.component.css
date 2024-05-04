@@ -2,13 +2,14 @@ main {
   display: flex;
   justify-content: center;
   align-items: center;
+  height: 100dvh;
 }
 article {
   display: flex;
   gap: 20px;
   width: 80%;
   /* background: #ffffff; */
-  border: 2px solid var(--light-purple);
+  border: 2px solid var(--secondary);
   padding: 15px;
   border-radius: 40px;
 }
@@ -23,7 +24,7 @@ article .left img {
   border-radius: 40px;
 }
 .right {
-  border-left: 2px solid var(--light-purple);
+  border-left: 2px solid var(--secondary);
   display: flex;
   justify-content: center;
   align-items: center;
@@ -47,31 +48,30 @@ article .left img {
 .input {
   width: 100%;
   background: transparent;
-  color: var(--light-purple);
-  border: 2px solid var(--light-purple);
+  color: var(--secondary);
+  border: 2px solid var(--secondary);
   border-radius: 40px;
   padding: 5px 10px;
 }
 .input::placeholder {
-  color: var(--light-purple);
+  color: var(--secondary);
 }
 .button {
   background: transparent;
   padding: 10px 20px;
-  color: var(--light-purple);
-  border: 2px solid var(--light-purple);
+  color: var(--secondary);
+  border: 2px solid var(--secondary);
   border-radius: 40px;
 }
 .button:hover {
-  background: var(--light-purple);
+  background: var(--secondary);
   color: white;
 }
 .right form h1 {
-  color: var(--light-purple);
+  color: var(--secondary);
   font-size: 3em;
 }
 .right form h1 span {
-  color: var(--light-purple);
+  color: var(--secondary);
   font-size: 2em;
-  font-family: Biyalova;
 }
