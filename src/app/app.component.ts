@@ -1,4 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, ViewChild, AfterViewInit } from '@angular/core';
+import { Application } from '@splinetool/runtime';
+import { StartComponent } from './start/start.component';
 
 @Component({
   selector: 'app-root',

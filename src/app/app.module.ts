@@ -9,6 +9,7 @@ import { StartComponent } from './start/start.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FeatureComponent } from './Info/feature/feature.component';
 import { TeamComponent } from './info/team/team.component';
+import { LoginComponent } from './component/login/login.component';
 
 @NgModule({
   declarations: [
@@ -17,6 +18,7 @@ import { TeamComponent } from './info/team/team.component';
     StartComponent,
     FeatureComponent,
     TeamComponent,
+    LoginComponent,
   ],
   imports: [
     BrowserModule,

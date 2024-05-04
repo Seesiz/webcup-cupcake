@@ -2,7 +2,7 @@
 
 @import "../node_modules/bootstrap/dist/css/bootstrap.css";
 @import url("https://fonts.googleapis.com/css2?family=Red+Hat+Display:ital,wght@0,300..900;1,300..900&display=swap");
-@import url("https://fonts.googleapis.com/css2?family=Zilla+Slab:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap");
 :root {
   --primary: #f7f7f8;
   --primary-darker: rgba(255, 255, 255, 0.482);
@@ -14,12 +14,11 @@
 * {
   font-family: "Red Hat Display", sans-serif;
   transition: 0.3s;
-  cursor: none !important;
 }
 
 .presentation,
 .presentation span {
-  font-family: "Zilla Slab", serif;
+  font-family: "Lato", sans-serif;
   color: var(--primary);
 }
 
