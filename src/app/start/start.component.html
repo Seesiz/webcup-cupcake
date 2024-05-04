@@ -3,16 +3,10 @@
   @fadeInAnimation
 >
   <video #videoPlayer class="position-absolute" autoplay loop>
-    <source src="../../assets/video/choix1.mp4" type="video/mp4" />
+    <source src="../../assets/video/hero.mp4" type="video/mp4" />
     Your browser does not support the video tag.
   </video>
-  <div
-    class="text-center position-relative home-text d-flex align-items-center"
-    *ngIf="showText"
-  >
-    <div class="showText" *ngIf="showText">
-      <div class="imagination discover" @lendRight>DISCOVER</div>
-      <div class="imagination barter" @lendLeft>BARTER</div>
-    </div>
+  <div class="showText" *ngIf="showText">
+    <button>TROC</button>
   </div>
 </div>
