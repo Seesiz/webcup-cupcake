@@ -22,6 +22,7 @@ export class ArbreComponent implements AfterViewInit {
   dragOffsetY: number = 0;
   data: any[] = [];
   idUser: number = 1;
+  showModal: boolean = false;
   enter() {
     this.mouseService.enter();
   }
@@ -51,11 +52,8 @@ export class ArbreComponent implements AfterViewInit {
   setTask() {
     const center = this.showSetCenter();
     if (center) {
-      // console.log(center);
       for (let i = 0; i < 4; i++) {
         for (let element of this.data[i].skills) {
-          console.log(element);
-
           this.tasks[element.id - 1] = {
             id: element.id,
             x: element.x - 30 + center.width / 2,
@@ -64,6 +62,8 @@ export class ArbreComponent implements AfterViewInit {
             text: element.title,
             description: element.description,
             file: this.changeFileName(element.title),
+            blocked: element.blocked,
+            unblockable: element.unblockable,
           };
           for (let par of element.parents) {
             this.dependencies.push({
@@ -77,9 +77,7 @@ export class ArbreComponent implements AfterViewInit {
   }
 
   showSetCenter() {
-    const rect = document
-      .querySelector('.pert-container')
-      ?.getBoundingClientRect();
+    const rect = document.querySelector('.content')?.getBoundingClientRect();
     if (rect) {
       return rect;
     }
@@ -108,6 +106,10 @@ export class ArbreComponent implements AfterViewInit {
     return fileName;
   }
 
+  getProposition() {
+    this.showModal = true;
+  }
+
   getLineStyle(line: any): any {
     if (line) {
       const deltaX = this.tasks[line.to].x - this.tasks[line.from].x;
@@ -125,6 +127,14 @@ export class ArbreComponent implements AfterViewInit {
         background: `linear-gradient(to right, ${
           this.tasks[line.from].color
         }, ${this.tasks[line.to].color})`,
+        border:
+          this.tasks[line.to].blocked || this.tasks[line.from].blocked
+            ? '1.4px dashed gray'
+            : '',
+        borderDashed:
+          this.tasks[line.to].blocked || this.tasks[line.from].blocked
+            ? '10px'
+            : '',
       };
     }
     return {

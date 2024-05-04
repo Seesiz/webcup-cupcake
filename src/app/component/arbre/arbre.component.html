@@ -1,50 +1,59 @@
-<div
-  class="pert-container"
-  style="overflow: hidden"
-  *ngIf="showText"
-  @fadeInAnimation
-  cdkDrag
->
+<div class="content">
+  <video #videoPlayer class="position-absolute" autoplay loop>
+    <source src="../../../assets/video/ciel.mp4" type="video/mp4" />
+    Your browser does not support the video tag.
+  </video>
   <div
-    class="pert-svg"
+    class="pert-container"
     style="overflow: hidden"
-    *ngFor="let line of dependencies"
+    *ngIf="showText"
+    @fadeInAnimation
+    cdkDrag
   >
-    <div class="line" [style]="getLineStyle(line)"></div>
+    <div
+      class="pert-svg"
+      style="overflow: hidden"
+      *ngFor="let line of dependencies"
+    >
+      <div class="line" [style]="getLineStyle(line)"></div>
+    </div>
+    <div
+      *ngFor="let task of tasks"
+      class="skill position-absolute p-1"
+      (mouseenter)="enter()"
+      (mouseleave)="exit()"
+      (click)="task.blocked ? getProposition() : ''"
+      [style]="{
+        left: task.x + 'px',
+        top: task.y + 'px',
+        border: '2px solid ' + (task.blocked ? 'gray' : task.color)
+      }"
+    >
+      <div class="description p-2 d-flex flex-column">
+        <b style="text-wrap: nowrap">{{ task.text }}</b>
+        <span style="width: 10dvw">{{ task.description }}</span>
+      </div>
+      <div class="icon d-flex align-items-center">
+        <img
+          src="../../../assets/img/{{ task.file }}.gif"
+          alt=""
+          width="100%"
+          class="mb-1"
+          [style]="
+            task.blocked ? 'filter: grayscale(100%)' : 'filter: grayscale(0%)'
+          "
+        />
+      </div>
+    </div>
   </div>
   <div
-    *ngFor="let task of tasks"
-    class="skill position-absolute p-1"
-    (mouseenter)="enter()"
-    (mouseleave)="exit()"
-    [style]="{
-      left: task.x + 'px',
-      top: task.y + 'px',
-      borderBottom: '2px solid ' + task.color
-    }"
+    class="modal d-flex flex-column position-fixed"
+    *ngIf="showModal"
+    @fadeInAnimation
   >
-    <div class="description p-2 d-flex flex-column">
-      <b style="text-wrap: nowrap">{{ task.text }}</b>
-      <span style="width: 10dvw">{{ task.description }}</span>
-    </div>
-    <div class="icon d-flex align-items-center">
-      <img
-        src="../../../assets/img/{{ task.file }}.gif"
-        alt=""
-        width="100%"
-        class="mb-1"
-      />
-    </div>
+    <header class="d-flex flex-row justify-content-between p-2 px-4">
+      <b>Proposition</b>
+      <button (click)="showModal = false">X</button>
+    </header>
   </div>
 </div>
-<video
-  #videoPlayer
-  width="100%"
-  height="100%"
-  class="position-fixed"
-  style="top: 0; z-index: -1"
-  autoplay
->
-  <source src="../../../assets/video/earth.mp4" type="video/mp4" />
-  Your browser does not support the video tag.
-</video>
