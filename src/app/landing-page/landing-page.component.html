@@ -84,10 +84,10 @@
       <span class="bottom"></span>
     </nav>
     <nav
-    (mouseenter)="onPress(); hoverShowOn('/home/arbre')"
-    (mouseleave)="onExit(); hoverShowExit('/home/started', '/home/arbre')"
-    (click)="navigate('/home/arbre'); makeShowText(); onExit()"
-    [class.active]="link === '/home/arbre'"
+      (mouseenter)="onPress(); hoverShowOn('/home/arbre')"
+      (mouseleave)="onExit(); hoverShowExit('/home/started', '/home/arbre')"
+      (click)="navigate('/home/arbre'); makeShowText(); onExit()"
+      [class.active]="link === '/home/arbre'"
     >
       Skill tree
       <span class="bottom"></span>
@@ -103,7 +103,9 @@
     </nav>
   </menu>
 </div>
-<div class="elite d-flex flex-column gap-2 position-absolute align-items-start">
+<div
+  class="elite d-flex flex-column gap-20 position-absolute align-items-start"
+>
   <button
     class="px-2 p-1"
     (mouseenter)="onPress(); hoverShowOn('/home/started')"

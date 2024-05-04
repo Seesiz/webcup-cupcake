@@ -10,9 +10,9 @@
     class="text-center position-relative home-text d-flex align-items-center"
     *ngIf="showText"
   >
-    <div class="" *ngIf="showText">
-      <div class="imagination discover" [@lendRight]>DISCOVER</div>
-      <div class="imagination barter" [@lendLeft]>BARTER</div>
+    <div class="showText" *ngIf="showText">
+      <div class="imagination discover" @lendRight>DISCOVER</div>
+      <div class="imagination barter" @lendLeft>BARTER</div>
     </div>
   </div>
 </div>

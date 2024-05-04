@@ -68,18 +68,24 @@ header {
 }
 
 .elite {
-  top: 50%;
+  bottom: 0%;
+  /* top: 50%; */
   transform: translateY(-50%);
-  left: 2%;
+  left: 0%;
   z-index: 1;
   width: 10%;
+  display: flex;
+  gap: 100px;
 }
 
 .elite button {
   font-size: 2.3dvh !important;
-  backdrop-filter: blur(10px);
-  width: 100%;
+  /* backdrop-filter: blur(10px); */
+  width: 70%;
+  background-color: transparent;
   backdrop-filter: blur(0px) !important;
+  transform: rotate(-90deg);
+  border-bottom: 2px solid #fff;
 }
 
 header h5 {

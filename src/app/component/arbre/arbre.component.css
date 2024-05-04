@@ -2,7 +2,7 @@
   width: 200dvw;
   height: 200dvh;
   display: flex;
-  cursor: move;
+  /* cursor: move; */
 }
 
 .pert-svg {
@@ -12,7 +12,7 @@
 }
 
 .pert-circle {
-  fill: #fff;
+  fill: transparent;
   stroke: #000;
   stroke-width: 2;
 }
