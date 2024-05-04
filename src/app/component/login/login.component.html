@@ -1,1 +1,42 @@
-<p>login works!</p>
+<main>
+    <article>
+      <div class="left">
+        <img src="../../assets/img_sign_up.jpg" alt="" />
+      </div>
+      <div class="right">
+        <form
+          (submit)="onSubmit(nom.value, prenom.value, dtn.value, password.value)"
+        >
+          <h1>Sign <span>up</span></h1>
+          <div class="line">
+            <input
+              type="text"
+              #nom
+              name="nom"
+              placeholder="Nom"
+              class="input"
+              required
+            />
+            <input
+              type="text"
+              #prenom
+              name="prenom"
+              placeholder="Prénom"
+              class="input"
+              required
+            />
+          </div>
+          <input type="date" #dtn name="dtn" class="input" required />
+          <input
+            type="password"
+            #password
+            placeholder="Mot de passe"
+            class="input"
+            required
+          />
+          <button type="submit" class="button">Valider</button>
+        </form>
+      </div>
+    </article>
+  </main>
+  

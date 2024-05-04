@@ -1,0 +1,77 @@
+main {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+article {
+  display: flex;
+  gap: 20px;
+  width: 80%;
+  /* background: #ffffff; */
+  border: 2px solid var(--light-purple);
+  padding: 15px;
+  border-radius: 40px;
+}
+.left {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 50%;
+}
+article .left img {
+  width: 80%;
+  border-radius: 40px;
+}
+.right {
+  border-left: 2px solid var(--light-purple);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 50%;
+  padding: 20px;
+}
+.right form {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  gap: 15px;
+}
+.line {
+  display: flex;
+  gap: 10px;
+}
+.right form .input {
+  width: 100%;
+}
+.input {
+  width: 100%;
+  background: transparent;
+  color: var(--light-purple);
+  border: 2px solid var(--light-purple);
+  border-radius: 40px;
+  padding: 5px 10px;
+}
+.input::placeholder {
+  color: var(--light-purple);
+}
+.button {
+  background: transparent;
+  padding: 10px 20px;
+  color: var(--light-purple);
+  border: 2px solid var(--light-purple);
+  border-radius: 40px;
+}
+.button:hover {
+  background: var(--light-purple);
+  color: white;
+}
+.right form h1 {
+  color: var(--light-purple);
+  font-size: 3em;
+}
+.right form h1 span {
+  color: var(--light-purple);
+  font-size: 2em;
+  font-family: Biyalova;
+}
