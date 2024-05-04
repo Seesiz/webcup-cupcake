@@ -1,12 +1,14 @@
-var express = require('express');
-var router = express.Router();
+const express = require('express');
+const router = express.Router();
 
-var authentificationRouter = require('./authentification.routes');
-var competenceRouter = require('./competence.routes');
+const authentificationRouter = require('./authentification.routes');
+const competenceRouter = require('./competence.routes');
+const trocRouter = require('./troc.routes');
 
 
 router.use('/auth', authentificationRouter);
 router.use('/skill', competenceRouter);
+router.use('/troc', trocRouter);
 
 module.exports = router;
 

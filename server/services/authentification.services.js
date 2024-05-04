@@ -11,10 +11,13 @@ const authUsers = async (login, password) => {
     try {
         const user = await User.findOne({
             where: {
-                login: login,
-                password: password
+                email: login,
+                motdepasse: password
             }
         });
+        if (user) {
+            user.motdepasse = '';
+        }
 
         return user; // Retourne l'utilisateur trouvé ou null s'il n'existe pas
     } catch (error) {
