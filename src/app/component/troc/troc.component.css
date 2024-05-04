@@ -1,0 +1,44 @@
+main {
+  /* background-color: red; */
+  display: flex;
+  flex-direction: column;
+  gap: 50px;
+  justify-content: center;
+  align-items: center;
+  width: 100vw;
+  height: 100vh;
+  color: #fff;
+  /* overflow: hidden; */
+}
+main video {
+  width: 100vw;
+  position: absolute;
+  z-index: -1;
+}
+.principal {
+  /* background-color: red; */
+  backdrop-filter: blur(10px);
+  /* background-color: #7f191917; */
+  border-radius: 20px;
+  padding: 10px 15px;
+  color: white;
+  display: flex;
+  width: 40%;
+  border: 1px solid #fff;
+}
+.pic img {
+  width: 10vw;
+  position: absolute;
+}
+.title {
+  flex: 1;
+}
+.pic {
+  flex: 1;
+}
+.elements {
+  flex: 1;
+  display: flex;
+  flex-wrap: wrap;
+}
+.suggestion

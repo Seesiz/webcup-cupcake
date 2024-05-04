@@ -1,0 +1,39 @@
+.pert-container {
+  width: 100dvw;
+  height: 100dvh;
+  display: flex;
+  position: relative;
+  /* cursor: move; */
+}
+
+.pert-line {
+  stroke: #fff;
+  stroke-width: 2;
+}
+
+.pert-text {
+  color: var(--primary);
+}
+
+.skill {
+  backdrop-filter: blur(20px);
+  border-radius: 50%;
+}
+
+.skill .icon {
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+}
+
+.line {
+  height: 10px;
+  background: linear-gradient(to right, var(--primary), var(--third));
+}
+
+.description {
+  position: absolute;
+  right: 0;
+  transform: translateX(100%);
+  background-color: var(--primary);
+}

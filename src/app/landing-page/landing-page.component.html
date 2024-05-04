@@ -43,7 +43,7 @@
     (mouseenter)="onPress()"
     (mouseleave)="onExit()"
   >
-    JoURNE <span class="dot">&#x2022;</span>
+    All<span class="dot">&#x2022;</span>FoR<span class="dot">&#x2022;</span>oNe
   </h5>
   <button
     class="px-2 p-1"
@@ -54,9 +54,12 @@
     "
     (mouseenter)="onPress()"
     (mouseleave)="onExit()"
+    routerLink="/login"
+    *ngIf="!isConnected"
   >
     GET STARTED
   </button>
+  <div class="userInterface" *ngIf="isConnected"></div>
 </header>
 <div class="landing">
   <div class="welcome">
@@ -83,11 +86,12 @@
       <span class="bottom"></span>
     </nav>
     <nav
-      (mouseenter)="onPress()"
-      (mouseleave)="onExit()"
-      [class.active]="false"
+      (mouseenter)="onPress(); hoverShowOn('/home/arbre')"
+      (mouseleave)="onExit(); hoverShowExit('/home/started', '/home/arbre')"
+      (click)="navigate('/home/arbre'); makeShowText(); onExit()"
+      [class.active]="link === '/home/arbre'"
     >
-      Try our tools
+      Skill tree
       <span class="bottom"></span>
     </nav>
     <nav
@@ -101,7 +105,9 @@
     </nav>
   </menu>
 </div>
-<div class="elite d-flex flex-column gap-2 position-absolute align-items-start">
+<div
+  class="elite d-flex flex-column gap-20 position-absolute align-items-start"
+>
   <button
     class="px-2 p-1"
     (mouseenter)="onPress(); hoverShowOn('/home/started')"

@@ -1,4 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, ViewChild, AfterViewInit } from '@angular/core';
+import { Application } from '@splinetool/runtime';
+import { StartComponent } from './start/start.component';
 
 @Component({
   selector: 'app-root',
@@ -6,3 +8,5 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css'],
 })
 export class AppComponent {}
+
+export const baseUrl = 'https://cupcake.madagascar.webcup.hodi.host/backend';

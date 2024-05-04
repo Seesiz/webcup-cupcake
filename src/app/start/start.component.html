@@ -1,8 +1,12 @@
 <div
-  class="content d-flex justify-content-center align-items-center px-5"
+  class="content d-flex flex-row justify-content-start align-items-center"
   @fadeInAnimation
 >
-  <div class="presentation text-center" *ngIf="showText" @fadeInAnimation>
-    Unlock the potential of your <b id="imagination">imagination</b>
+  <video #videoPlayer class="position-absolute" autoplay loop>
+    <source src="../../assets/video/hero.mp4" type="video/mp4" />
+    Your browser does not support the video tag.
+  </video>
+  <div class="showText" *ngIf="showText">
+    <button routerLink="/home/troc">TROC</button>
   </div>
 </div>
