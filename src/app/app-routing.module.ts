@@ -7,6 +7,7 @@ import { FeatureComponent } from './Info/feature/feature.component';
 import { TeamComponent } from './info/team/team.component';
 import { LoginComponent } from './component/login/login.component';
 import { ArbreComponent } from './component/arbre/arbre.component';
+import { TrocComponent } from './component/troc/troc.component';
 
 const routes: Routes = [
   {
@@ -46,6 +47,10 @@ const routes: Routes = [
           {
             path: 'arbre',
             component: ArbreComponent,
+          },
+          {
+            path: 'troc',
+            component: TrocComponent,
           },
         ],
       },
