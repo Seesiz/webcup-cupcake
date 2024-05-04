@@ -1,27 +1,28 @@
 .pert-container {
-  width: 200dvw;
-  height: 200dvh;
+  width: 100dvw;
+  height: 100dvh;
   display: flex;
+  position: relative;
   /* cursor: move; */
-}
-
-.pert-svg {
-  width: 100%;
-  height: 100%;
-  /* background-color: aquamarine; */
-}
-
-.pert-circle {
-  fill: transparent;
-  stroke: #000;
-  stroke-width: 2;
-}
-
-.pert-circle:hover {
-  fill: rgb(239, 30, 30);
 }
 
 .pert-line {
   stroke: #fff;
   stroke-width: 2;
+}
+
+.pert-text {
+  color: var(--primary);
+}
+
+.skill {
+  backdrop-filter: blur(5px);
+  border-radius: 50%;
+  border-bottom: 2px solid var(--third);
+}
+
+.skill .icon {
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
 }
