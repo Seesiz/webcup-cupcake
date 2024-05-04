@@ -1,6 +1,5 @@
-const SecuritePortails = require("../models/SecuritePortails.model");
+// Description: Services pour l'authentification des utilisateurs
 const User = require("../models/User.model");
-const UserDetails = require("../models/UserDetails.model");
 
 /**
  * 
@@ -10,7 +9,7 @@ const UserDetails = require("../models/UserDetails.model");
  */
 const authUsers = async (login, password) => {
     try {
-        const user = await UserDetails.findOne({
+        const user = await User.findOne({
             where: {
                 login: login,
                 password: password
@@ -24,24 +23,6 @@ const authUsers = async (login, password) => {
     }
 }
 
-const authSecurite = async (login, password, portails) => {
-    try {
-        const user = await SecuritePortails.findOne({
-            where: {
-                login: login,
-                password: password,
-                portails
-            }
-        });
-
-        return user; // Retourne l'utilisateur trouvé ou null s'il n'existe pas
-    } catch (error) {
-        console.error('Erreur lors de l\'authentification :', error);
-        return null; // En cas d'erreur, renvoie null
-    }
-}
-
 module.exports = {
-    authUsers,
-    authSecurite
+    authUsers
 }
