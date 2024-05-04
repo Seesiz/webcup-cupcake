@@ -1,19 +1,48 @@
 <main>
   <video src="../../../assets/video/sunrise - Trim.mp4" autoplay loop></video>
-  <div class="principal">
-    <div class="give">
-      <img src="../../../assets/img/cover/2.jpg" class="pics" />
-      <div class="text">
-        <h1>I wanna give this</h1>
-        <p>Those are the propositions</p>
+  <div class="page1" [@fadeToLeft]="isPageOne ? 'load' : 'exit'">
+    <div class="principal">
+      <div class="give">
+        <img src="../../../assets/img/cover/2.jpg" class="pics" />
+        <div class="text">
+          <h1>I wanna give this</h1>
+          <p>Those are the propositions</p>
+        </div>
+      </div>
+      <div class="need">
+        <div class="text">
+          <h1>I need this</h1>
+          <p>Those are the reasons why I need this</p>
+        </div>
+        <img src="../../../assets/img/cover/3.jpg" class="pics" />
       </div>
     </div>
-    <div class="need">
-      <div class="text">
-        <h1>I need this</h1>
-        <p>Those are the reasons why I need this</p>
+    <button (click)="isPageOne = !isPageOne">Propositions</button>
+  </div>
+  <div class="page2" [@fadeToLeft]="isPageOne ? 'load' : 'exit'">
+    <div class="proposition">
+      <div class="title">
+        <h1>Propositions</h1>
+        <p>In this section you can see the propositions peoples proposed</p>
       </div>
-      <img src="../../../assets/img/cover/3.jpg" class="pics" />
+      <div class="list">
+        <div class="arrow">
+          <i class="fa-solid fa-chevron-left"></i>
+        </div>
+        <div class="sideProposition">
+          <img src="../../../assets/img/cover/1.jpg" class="pics" />
+        </div>
+        <div class="aProposition">
+          <img src="../../../assets/img/cover/1.jpg" class="pics" />
+        </div>
+        <div class="sideProposition">
+          <img src="../../../assets/img/cover/1.jpg" class="pics" />
+        </div>
+        <div class="arrow">
+          <i class="fa-solid fa-chevron-right"></i>
+        </div>
+      </div>
     </div>
+    <button (click)="isPageOne = !isPageOne">Publication</button>
   </div>
 </main>
