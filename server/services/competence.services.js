@@ -25,9 +25,11 @@ const getSkillDerived = async () => {
     try {
         // Utiliser la méthode findAll de CompetenceDerive pour récupérer tous les éléments
       // Retourner les compétences racine récupérées
-        return await CompetenceDerive.findAll({
+        const competenceDerive = await CompetenceDerive.findAll({
           order: [['ordre', 'ASC']]
         });
+        // Retourner les compétences racine récupérées
+        return competenceDerive.map((userSkill) => userSkill.dataValues);
     } catch (error) {
         // Gérer les erreurs si la requête échoue
         console.error('Erreur lors de la récupération des compétences racine :', error);
@@ -39,12 +41,14 @@ const getUserSkill = async (userId, skillRouteId) => {
     try {
         // Utiliser la méthode findAll de UtilisateurCompetence pour trouver toutes les compétences de l'utilisateur
       // Retourner les compétences de l'utilisateur
-        return await UtilisateurCompetenceTyped.findAll({
+        let userSkills = await UtilisateurCompetenceTyped.findAll({
           where: {
             id_utilisateur: userId,
             root: skillRouteId
           }
         });
+        // Retourner les compétences de l'utilisateur
+        return userSkills.map((userSkill) => userSkill.dataValues);
     } catch (error) {
         // Gérer les erreurs si la requête échoue
         console.error('Erreur lors de la récupération des compétences de l\'utilisateur :', error);
