@@ -14,22 +14,21 @@
   z-index: -1;
 }
 
-.imagination {
-  font-size: 30vw;
-  color: var(--primary);
-  font-weight: 800 !important;
-  position: relative;
-  line-height: 75%;
-}
-
-.discover {
-  right: 4%;
-}
-
 .info {
   color: var(--primary);
 }
 
+.showText button {
+  background: transparent;
+  padding: 10px 20px;
+  border: 2px solid white;
+  border-radius: 40px;
+  color: white;
+}
+
 .showText {
-  padding-top: 50px;
+  display: flex;
+  position: absolute;
+  bottom: 10px;
+  left: 50%;
 }

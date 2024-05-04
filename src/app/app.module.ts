@@ -11,6 +11,7 @@ import { FeatureComponent } from './Info/feature/feature.component';
 import { TeamComponent } from './info/team/team.component';
 import { LoginComponent } from './component/login/login.component';
 import { ArbreComponent } from './component/arbre/arbre.component';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -27,6 +28,7 @@ import { ArbreComponent } from './component/arbre/arbre.component';
     AppRoutingModule,
     NgbModule,
     BrowserAnimationsModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent],
