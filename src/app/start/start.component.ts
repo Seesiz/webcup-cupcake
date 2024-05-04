@@ -22,17 +22,18 @@ export const fadeInAnimation = trigger('fadeInAnimation', [
 ]);
 const lendRight = trigger('lendRight', [
   transition(':enter', [
-    animate('0.5s', style({ transform: 'translateX(100%)' })),
+    style({ transform: 'translateX(-100%)' }),
+    animate('0.5s', style({ transform: 'translateX(0%)' })),
   ]),
   transition(':leave', [
-    animate('0.5s', style({ transform: 'translateX(0%)' })),
+    animate('0.5s', style({ transform: 'translateX(-100%)' })),
   ]),
 ]);
 const lendLeft = trigger('lendLeft', [
   transition(':enter', [
+    style({ transform: 'translateX(100%)' }),
     animate('0.5s', style({ transform: 'translateX(0%)' })),
   ]),
-
   transition(':leave', [
     animate('0.5s', style({ transform: 'translateX(-100%)' })),
   ]),

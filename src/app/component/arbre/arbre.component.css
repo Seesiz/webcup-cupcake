@@ -12,7 +12,7 @@
 }
 
 .pert-circle {
-  fill: #fff;
+  fill: transparent;
   stroke: #000;
   stroke-width: 2;
 }

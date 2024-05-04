@@ -23,17 +23,13 @@
 }
 
 .discover {
-  right: 100%;
+  right: 4%;
 }
 
 .info {
   color: var(--primary);
 }
 
-.plus-ultra {
-  font-family: "Water Brush", cursive;
-  bottom: 0;
-  right: 0;
-  font-size: 8vw;
-  color: var(--primary);
+.showText {
+  padding-top: 50px;
 }
