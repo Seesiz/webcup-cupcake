@@ -1,4 +1,4 @@
-// Creation utilisateur
+
 
 CREATE TABLE utilisateur (
     id_utilisateur INT PRIMARY KEY AUTO_INCREMENT,
