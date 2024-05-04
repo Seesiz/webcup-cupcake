@@ -6,7 +6,7 @@ const getCompetenceRacine = async (req, res) => {
 }
 const getCompetenceUser = async (req, res) => {
     console.log(req.params.id)
-    let userSkills = getUserSkillAndPrepare(req.params.id)
+    let userSkills = await getUserSkillAndPrepare(req.params.id)
     res.json(userSkills)
 }
 

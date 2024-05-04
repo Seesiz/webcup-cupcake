@@ -1,5 +1,6 @@
 const CompetenceDerive = require("../models/CompetenceDerivee.model");
 const CompetenceRacine = require("../models/CompetenceRacine.model");
+const UtilisateurCompetenceTyped = require("../models/UserCompetenceTyped.model");
 
 
 const getSkillRoutes = async () => {
@@ -21,7 +22,9 @@ const getSkillDerived = async () => {
     // Get all 'CompetenceDerive' in the database
     try {
         // Utiliser la méthode findAll de CompetenceDerive pour récupérer tous les éléments
-        const competenceDerive = await CompetenceDerive.findAll();
+        const competenceDerive = await CompetenceDerive.findAll({
+            order: [['ordre', 'ASC']]
+        });
     
         // Retourner les compétences racine récupérées
         return competenceDerive;
@@ -52,10 +55,14 @@ const getUserSkill = async (userId, skillRouteId) => {
 }
   
 const getUserSkillsByRoute = async (userId, skillRouteId) => {
-    const skills = getSkillDerived().filter(skill => skill.root === skillRouteId);
-    const userSkills = getUserSkill(userId, skillRouteId).map(userSkill => userSkill.id_competence);
-  
+    const skills = (await getSkillDerived()).filter(skill => {
+        return skill.id_racine === skillRouteId;
+    });
+    const userSkills = (await getUserSkill(userId, skillRouteId)).map(userSkill => userSkill.id_competence);
+    console.log(userSkills);
+    console.log(skills);
     return skills.map(skill => {
+        console.log("id", skill.id, !userSkills.includes(skill.id));
       return {
         ...skill,
         blocked: !userSkills.includes(skill.id)
@@ -64,13 +71,16 @@ const getUserSkillsByRoute = async (userId, skillRouteId) => {
 };
   
 const getUserSkillAndPrepare = async (userId) => {
-    let skillRoutes = await getSkillRoutes()
-    return skillRoutes.map(route => {
-      return {
-        root: route.title,
-        skills: getUserSkillsByRoute(userId, route.title)
-      };
-    });
+    let skillRoutes = await getSkillRoutes();
+    let result = [];
+    for (let i = 0; i < skillRoutes.length; i++) {
+        let skills = await getUserSkillsByRoute(userId, skillRoutes[i].id);
+        result.push({
+            root: skillRoutes[i].title,
+            skills: skills
+        });
+    }
+    return result;
   
 }
 

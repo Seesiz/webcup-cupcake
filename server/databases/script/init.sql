@@ -62,8 +62,8 @@ CREATE VIEW COMPETENCES_UTILISATEUR AS
 -- Création de view avec Utilisateur_competence et le type de compétence
 CREATE VIEW UTILISATEUR_COMPETENCE_TYPED AS
     SELECT
-        UTILISATEUR_COMPETENCE.*,
-        COMPETENCE_DERIVE.id_racine as root
+        u.*,
+        c.id_racine as root
     FROM UTILISATEUR_COMPETENCE u
     JOIN COMPETENCE_DERIVE c ON u.id_competence = c.id;
 
@@ -73,3 +73,23 @@ CREATE VIEW UTILISATEUR_COMPETENCE_TYPED AS
 
 INSERT INTO utilisateur (id, nom, email, motdepasse) VALUES (1, 'admin', 'admin@gmail.com', 'password');
 INSERT INTO utilisateur (id, nom, email, motdepasse) VALUES (2, 'webcup', 'webcup@gmail.com', 'password');
+
+-- Insertion des compétences racines 
+INSERT INTO COMPETENCE_RACINE (id, title, couleur) VALUES (1, 'Eau', '#3498db');
+INSERT INTO COMPETENCE_RACINE (id, title, couleur) VALUES (2, 'Feu', '#e74c3c');
+INSERT INTO COMPETENCE_RACINE (id, title, couleur) VALUES (3, 'Terre', '#f39c12');
+INSERT INTO COMPETENCE_RACINE (id, title, couleur) VALUES (4, 'Air', '#1abc9c');
+
+-- Insertion des compétences dérivées, comme dans Avatar the last Airbender
+-- Ajout des elements de base Eau, Feu, Terre et Air
+INSERT INTO COMPETENCE_DERIVE (id, title, types, icon, description, ordre, id_racine) VALUES (1, 'Base Eau', 'Eau', 'fa fa-tint', 'Element de base Eau', 0, 1);
+INSERT INTO COMPETENCE_DERIVE (id, title, types, icon, description, ordre, id_racine) VALUES (2, 'Base Feu', 'Feu', 'fa fa-fire', 'Element de base Feu', 0, 2);
+INSERT INTO COMPETENCE_DERIVE (id, title, types, icon, description, ordre, id_racine) VALUES (3, 'Base Terre', 'Terre', 'fa fa-leaf', 'Element de base Terre', 0, 3);
+INSERT INTO COMPETENCE_DERIVE (id, title, types, icon, description, ordre, id_racine) VALUES (4, 'Base Air', 'Air', 'fa fa-cloud', 'Element de base Air', 0, 4);
+
+-- Ajout des elements derivée de Feu
+INSERT INTO COMPETENCE_DERIVE (id, title, types, icon, description, ordre, id_racine) VALUES (5, 'Foudre', 'Feu', 'fa fa-fire', 'Foudre', 50, 2);
+
+-- Insertion des compétences dérivées à une personne 
+INSERT INTO UTILISATEUR_COMPETENCE (id_utilisateur, id_competence) VALUES (1, 1);
+INSERT INTO UTILISATEUR_COMPETENCE (id_utilisateur, id_competence) VALUES (1, 1);
