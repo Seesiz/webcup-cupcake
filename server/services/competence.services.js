@@ -48,7 +48,7 @@ const getUserSkill = async (userId, skillRouteId) => {
           }
         });
         // Retourner les compétences de l'utilisateur
-        return userSkills.map((userSkill) => userSkill.dataValues);
+        return userSkills.map((userSkill) => userSkill);
     } catch (error) {
         // Gérer les erreurs si la requête échoue
         console.error('Erreur lors de la récupération des compétences de l\'utilisateur :', error);
@@ -57,20 +57,20 @@ const getUserSkill = async (userId, skillRouteId) => {
 }
 
 const getUserSkillsByRoute = async (user, skillRouteId) => {
-  console.log("user", user)
+  // console.log("user", user)
     let userId = user.id;
     const skills = (await getSkillDerived()).filter(skill => {
         return skill.id_racine === skillRouteId;
     });
     const userSkills = (await getUserSkill(userId, skillRouteId)).map(userSkill => userSkill.id_competence);
-    console.log(userSkills);
-    console.log(skills);
+    // console.log(userSkills);
+    // console.log(skills);
     let results = []
     let userXp = (await getUserXp(user)).xpPlus
     for (let i = 0; i < skills.length; i++) {
       let skill = skills[i];
-      console.log("id", skill.id, !userSkills.includes(skill.id));
-      console.log("userXp", userXp)
+      // console.log("id", skill.id, !userSkills.includes(skill.id));
+      // console.log("userXp", userXp)
       let loadedSkill = await prepareSkillParent(skill, userXp)
       results = [
         ...results,
@@ -97,6 +97,7 @@ const getUserXp = async (user) => {
 
 const prepareSkillParent = async (skill, userXp) => {
   console.log("search skill parent")
+  console.log("skill", skill)
   let results = await CompetenceLink.findAll({
     where : {
       child: skill.id
@@ -110,7 +111,7 @@ const prepareSkillParent = async (skill, userXp) => {
   console.log("maxXp: " + maxXp);
   return {
     skill : {
-      ...skill.dataValues,
+      ...skill,
       parents: parents
     },
     unblockable : userXp >= maxXp

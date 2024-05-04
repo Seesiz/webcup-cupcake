@@ -98,7 +98,7 @@ INSERT INTO UTILISATEUR_COMPETENCE (id_utilisateur, id_competence) VALUES (2, 2)
 -- Création de table pour les post sur l'annonce de proposition d'échange de compétence
 -- On y mettra le titre du post et la description
 -- L'id de l'utilisateur qui a créé le post
--- L'id de la compétence que l'utilisateur a 
+-- L'id de la compétence que l'utilisateur a
 -- L'id de la compétence que l'utilisateur cherche (mais pas obligatoire)
 -- La date de création du post
 -- La date de modification du post
@@ -141,7 +141,7 @@ CREATE TABLE PROPOSITION_ANNONCE (
 -- et les details sur les compétences (qu'il a et qu'il cherche)
 -- avec le nombre de proposition reçu
 CREATE VIEW POST_ANNONCE_DETAIL AS
-    SELECT 
+    SELECT
         p.*,
         u.nom as nom_utilisateur,
         u.prenom as prenom_utilisateur,
@@ -167,10 +167,10 @@ CREATE VIEW POST_ANNONCE_DETAIL AS
 -- et les details sur les compétences (qu'il propose)
 -- on joindra la table PROPOSITION_ANNONCE aveec POST_ANNONCE
 -- pour avoir l'id de la compétence recherché
--- puis on ajoutera un colonne qui va indiquer si la proposition coincide 
+-- puis on ajoutera un colonne qui va indiquer si la proposition coincide
 -- avec la compétence recherché (1 = oui, 0 = non)
 CREATE VIEW PROPOSITION_ANNONCE_DETAIL AS
-    SELECT 
+    SELECT
         p.*,
         u.nom as nom_utilisateur,
         u.prenom as prenom_utilisateur,
@@ -185,8 +185,8 @@ CREATE VIEW PROPOSITION_ANNONCE_DETAIL AS
         cr.couleur as couleur_racine_competence,
         cr.id as id_racine_competence,
         cr.id as root_competence,
-        CASE WHEN p.id_competence = pa.id_competence_recherche 
-            THEN 1 ELSE 0 
+        CASE WHEN p.id_competence = pa.id_competence_recherche
+            THEN 1 ELSE 0
         END as is_matching
     FROM PROPOSITION_ANNONCE p
     JOIN POST_ANNONCE pa ON p.id_post = pa.id
@@ -225,8 +225,8 @@ SELECT p.id, p.titre, p.nb_proposition FROM POST_ANNONCE_DETAIL p;
 -- Inserons un post annonce pour l'utilisateur 1
 -- qui cherche un utilisateur qui a la compétence Base Foudre (id = 5)
 -- et qui propose la compétence Base Eau (id = 1)
-INSERT INTO POST_ANNONCE 
-    (titre, description, id_utilisateur, id_competence, id_competence_recherche) 
+INSERT INTO POST_ANNONCE
+    (titre, description, id_utilisateur, id_competence, id_competence_recherche)
 VALUES ('Cherche Base Foudre', 'Je cherche quelqu''un qui a la compétence Base Foudre', 1, 1, 5);
 create table competence_link (
   id int primary key auto_increment,
@@ -253,3 +253,5 @@ alter table user_xp add column dateins timestamp default current_timestamp;
 
 alter table COMPETENCE_DERIVE add column x int default 0;
 alter table COMPETENCE_DERIVE add column y int default 0;
+alter table COMPETENCE_DERIVE add column color varchar(15) default '';
+
