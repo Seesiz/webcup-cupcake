@@ -14,14 +14,18 @@
   z-index: -1;
 }
 
-#imagination {
-  background: linear-gradient(to right, #ff0000, var(--third));
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  user-select: none;
-  font-size: 20vw;
+.imagination {
+  font-size: 30vw;
+  color: var(--primary);
+  font-weight: 800 !important;
   position: relative;
+  line-height: 75%;
 }
+
+.discover {
+  right: 100%;
+}
+
 .info {
   color: var(--primary);
 }
@@ -32,11 +36,4 @@
   right: 0;
   font-size: 8vw;
   color: var(--primary);
-}
-
-.home-text {
-  left: 0;
-  height: 100%;
-  width: 42%;
-  backdrop-filter: blur(10px);
 }

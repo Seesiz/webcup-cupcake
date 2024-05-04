@@ -40,7 +40,7 @@ button {
 button {
   background-color: rgba(131, 131, 131, 0.326);
   border: 1px solid transparent;
-  border-radius: 40px;
+  border-radius: 2px;
   font-size: 1.71vh;
   position: relative;
   color: var(--primary);
@@ -72,11 +72,14 @@ header {
   transform: translateY(-50%);
   left: 2%;
   z-index: 1;
+  width: 10%;
 }
 
 .elite button {
   font-size: 2.3dvh !important;
   backdrop-filter: blur(10px);
+  width: 100%;
+  backdrop-filter: blur(0px) !important;
 }
 
 header h5 {
