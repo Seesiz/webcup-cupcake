@@ -3,7 +3,7 @@
   height: 100dvh;
   position: relative;
   padding: 5% 10%;
-  background-image: url("../../../assets/img/bg2.jpeg");
+  background-image: url("../../../assets/img/UA.jpg");
   background-attachment: fixed;
   background-size: cover;
   background-position: center;
@@ -55,10 +55,10 @@
   width: 100%;
   background-origin: initial;
   border-radius: 5px;
-  filter: grayscale(100%);
+  /* filter: grayscale(100%); */
   z-index: 1;
   transition: 0.6s;
-  position: relative;
+  position: absolute;
 }
 
 .image img {
@@ -71,7 +71,7 @@
 }
 
 .image-div:hover .image {
-  filter: grayscale(0%);
+  /* filter: grayscale(0%); */
   transform: scale(1.08);
 }
 
@@ -94,35 +94,47 @@
 }
 
 .image1 {
-  background-image: url("../../../assets/teams/nyaro.jpg");
+  background-image: url("../../../assets/img/bakugo.jpg");
   background-position: center;
   background-size: cover;
   animation: imageShow 0.4s forwards;
   animation-delay: 0.3s;
 }
+.image1:hover {
+  background-image: url("../../../assets/teams/nyaro.jpg");
+}
 
 .image2 {
-  background-image: url("../../../assets/teams/fanantenana.jpg");
+  background-image: url("../../../assets/img/Aizawa.jpg");
   background-position: center;
   background-size: cover;
   animation: imageShow 0.4s forwards;
   animation-delay: 0.6s;
 }
+.image2:hover {
+  background-image: url("../../../assets/teams/fanantenana.jpg");
+}
 
 .image3 {
-  background-image: url("../../../assets/teams/mialy.jpg");
+  background-image: url("../../../assets/img/momo.jpg");
   background-position: center;
   background-size: cover;
   animation: imageShow 0.4s forwards;
   animation-delay: 0.9s;
 }
+.image3:hover {
+  background-image: url("../../../assets/teams/mialy.jpg");
+}
 
 .image4 {
-  background-image: url("../../../assets/teams/hasina.jpg");
+  background-image: url("../../../assets/img/Deku.jpg");
   background-position: center;
   background-size: cover;
   animation: imageShow 0.4s forwards;
   animation-delay: 1.2s;
+}
+.image4:hover {
+  background-image: url("../../../assets/teams/hasina.jpg");
 }
 
 .job {

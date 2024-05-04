@@ -12,6 +12,7 @@ import { TeamComponent } from './info/team/team.component';
 import { LoginComponent } from './component/login/login.component';
 import { ArbreComponent } from './component/arbre/arbre.component';
 import { FormsModule } from '@angular/forms';
+import { TrocComponent } from './component/troc/troc.component';
 
 @NgModule({
   declarations: [
@@ -22,6 +23,7 @@ import { FormsModule } from '@angular/forms';
     TeamComponent,
     LoginComponent,
     ArbreComponent,
+    TrocComponent,
   ],
   imports: [
     BrowserModule,
