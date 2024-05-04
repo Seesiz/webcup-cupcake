@@ -62,6 +62,8 @@ export class ArbreComponent implements OnInit {
 
   dependencies = [
     { from: 1, to: 1 },
+    // { from: 4, to: 5 },
+    // { from: 1, to: 5 },
     // { from: 2, to: 3 },
     // { from: 1, to: 4 },
   ];
@@ -71,6 +73,7 @@ export class ArbreComponent implements OnInit {
     { text: 'Feu', id: 2 },
     { text: 'Air', id: 3 },
     { text: 'Terre', id: 4 },
+    // { text: 'Boue', id: 5 },
     // { text: 'centre', id: 5 },
   ];
 
@@ -102,8 +105,8 @@ export class ArbreComponent implements OnInit {
         },
         // {
         //   id: 5,
-        //   x: center.width,
-        //   y: center.height,
+        //   x: center.width / 2,
+        //   y: center.height / 2,
         // },
       ];
     }
