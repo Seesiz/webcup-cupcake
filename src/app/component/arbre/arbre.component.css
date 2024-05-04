@@ -1,0 +1,27 @@
+.pert-container {
+  width: 200dvw;
+  height: 200dvh;
+  display: flex;
+  cursor: move;
+}
+
+.pert-svg {
+  width: 100%;
+  height: 100%;
+  /* background-color: aquamarine; */
+}
+
+.pert-circle {
+  fill: #fff;
+  stroke: #000;
+  stroke-width: 2;
+}
+
+.pert-circle:hover {
+  fill: rgb(239, 30, 30);
+}
+
+.pert-line {
+  stroke: #fff;
+  stroke-width: 2;
+}

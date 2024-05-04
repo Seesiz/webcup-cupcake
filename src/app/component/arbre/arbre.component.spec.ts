@@ -1,0 +1,23 @@
+import { ComponentFixture, TestBed } from '@angular/core/testing';
+
+import { ArbreComponent } from './arbre.component';
+
+describe('ArbreComponent', () => {
+  let component: ArbreComponent;
+  let fixture: ComponentFixture<ArbreComponent>;
+
+  beforeEach(async () => {
+    await TestBed.configureTestingModule({
+      declarations: [ArbreComponent]
+    })
+    .compileComponents();
+    
+    fixture = TestBed.createComponent(ArbreComponent);
+    component = fixture.componentInstance;
+    fixture.detectChanges();
+  });
+
+  it('should create', () => {
+    expect(component).toBeTruthy();
+  });
+});
