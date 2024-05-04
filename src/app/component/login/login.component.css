@@ -1,77 +1,25 @@
-main {
-  display: flex;
-  justify-content: center;
-  align-items: center;
+.content {
+  width: 100dvw;
   height: 100dvh;
+  background: url("../../../assets/img/bg2.jpeg");
+  background-image: url("../../../assets/img/bg2.jpeg");
+  background-attachment: fixed;
+  background-size: cover;
+  background-position: center;
+  background-origin: padding-box;
 }
-article {
-  display: flex;
-  gap: 20px;
-  width: 80%;
-  /* background: #ffffff; */
-  border: 2px solid var(--secondary);
-  padding: 15px;
-  border-radius: 40px;
+
+.login {
+  overflow: hidden;
+  backdrop-filter: blur(10px);
+  box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.324);
+  border-radius: 12px;
 }
-.left {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 50%;
+
+.title {
+  color: var(--primary);
 }
-article .left img {
-  width: 80%;
-  border-radius: 40px;
-}
-.right {
-  border-left: 2px solid var(--secondary);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 50%;
-  padding: 20px;
-}
-.right form {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-  gap: 15px;
-}
-.line {
-  display: flex;
-  gap: 10px;
-}
-.right form .input {
-  width: 100%;
-}
-.input {
-  width: 100%;
-  background: transparent;
-  color: var(--secondary);
-  border: 2px solid var(--secondary);
-  border-radius: 40px;
-  padding: 5px 10px;
-}
-.input::placeholder {
-  color: var(--secondary);
-}
-.button {
-  background: transparent;
-  padding: 10px 20px;
-  color: var(--secondary);
-  border: 2px solid var(--secondary);
-  border-radius: 40px;
-}
-.button:hover {
-  background: var(--secondary);
-  color: white;
-}
-.right form h1 {
-  color: var(--secondary);
-  font-size: 3em;
-}
-.right form h1 span {
-  color: var(--secondary);
-  font-size: 2em;
+
+.dot {
+  color: var(--third);
 }

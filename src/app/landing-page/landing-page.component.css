@@ -1,7 +1,7 @@
 .circle {
   border-radius: 50%;
   background-color: white;
-  position: absolute;
+  position: fixed;
   z-index: 10;
   pointer-events: none;
   mix-blend-mode: difference;

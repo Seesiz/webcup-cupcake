@@ -75,7 +75,8 @@
 }
 
 .image-div:hover img,
-.image-div:hover .job {
+.image-div:hover .job,
+.image-div:hover .name {
   opacity: 1;
 }
 
@@ -144,4 +145,5 @@
   font-size: 5vh;
   text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
   font-weight: 700;
+  opacity: 0;
 }
