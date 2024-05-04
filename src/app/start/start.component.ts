@@ -20,11 +20,28 @@ export const fadeInAnimation = trigger('fadeInAnimation', [
   ]),
   transition(':leave', [animate('0.5s', style({ opacity: 0 }))]),
 ]);
+const lendRight = trigger('lendRight', [
+  transition(':enter', [
+    animate('0.5s', style({ transform: 'translateX(100%)' })),
+  ]),
+  transition(':leave', [
+    animate('0.5s', style({ transform: 'translateX(0%)' })),
+  ]),
+]);
+const lendLeft = trigger('lendLeft', [
+  transition(':enter', [
+    animate('0.5s', style({ transform: 'translateX(0%)' })),
+  ]),
+
+  transition(':leave', [
+    animate('0.5s', style({ transform: 'translateX(-100%)' })),
+  ]),
+]);
 @Component({
   selector: 'app-start',
   templateUrl: './start.component.html',
   styleUrls: ['./start.component.css'],
-  animations: [fadeInAnimation],
+  animations: [fadeInAnimation, lendLeft, lendRight],
 })
 export class StartComponent {
   showText: boolean = false;
