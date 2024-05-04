@@ -10,6 +10,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FeatureComponent } from './Info/feature/feature.component';
 import { TeamComponent } from './info/team/team.component';
 import { LoginComponent } from './component/login/login.component';
+import { ArbreComponent } from './component/arbre/arbre.component';
 
 @NgModule({
   declarations: [
@@ -19,6 +20,7 @@ import { LoginComponent } from './component/login/login.component';
     FeatureComponent,
     TeamComponent,
     LoginComponent,
+    ArbreComponent,
   ],
   imports: [
     BrowserModule,

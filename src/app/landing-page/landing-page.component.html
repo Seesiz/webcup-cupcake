@@ -84,11 +84,12 @@
       <span class="bottom"></span>
     </nav>
     <nav
-      (mouseenter)="onPress()"
-      (mouseleave)="onExit()"
-      [class.active]="false"
+    (mouseenter)="onPress(); hoverShowOn('/home/arbre')"
+    (mouseleave)="onExit(); hoverShowExit('/home/started', '/home/arbre')"
+    (click)="navigate('/home/arbre'); makeShowText(); onExit()"
+    [class.active]="link === '/home/arbre'"
     >
-      Try our tools
+      Skill tree
       <span class="bottom"></span>
     </nav>
     <nav
