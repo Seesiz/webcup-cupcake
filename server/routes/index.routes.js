@@ -6,7 +6,7 @@ var competenceRouter = require('./competence.routes');
 
 
 router.use('/auth', authentificationRouter);
-router.use('/competence', competenceRouter);
+router.use('/skill', competenceRouter);
 
 module.exports = router;
 

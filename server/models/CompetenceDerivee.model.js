@@ -26,6 +26,14 @@ const CompetenceDerive = sequelize.define('competenceDerive', {
     type: DataTypes.INTEGER,
     defaultValue: 0
   },
+  x: {
+    type: DataTypes.INTEGER,
+    defaultValue: 0
+  },
+  y: {
+    type: DataTypes.INTEGER,
+    defaultValue: 0
+  },
   id_racine: {
     type: DataTypes.INTEGER,
     references: {
