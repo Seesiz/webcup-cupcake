@@ -55,9 +55,11 @@
     (mouseenter)="onPress()"
     (mouseleave)="onExit()"
     routerLink="/login"
+    *ngIf="!isConnected"
   >
     GET STARTED
   </button>
+  <div class="userInterface" *ngIf="isConnected"></div>
 </header>
 <div class="landing">
   <div class="welcome">

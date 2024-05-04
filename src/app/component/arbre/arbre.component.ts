@@ -1,13 +1,11 @@
 import { Component, Injectable, OnInit } from '@angular/core';
+import axios from 'axios';
+import { baseUrl } from '../../app.component';
 
-interface Task {
+interface Skill {
   id: number;
-  x?: number;
-  y?: number;
-}
-interface Text {
-  text: string;
-  id: number;
+  title: string;
+  parents: number[];
 }
 @Injectable({
   providedIn: 'root',
@@ -18,97 +16,43 @@ interface Text {
   styleUrls: ['./arbre.component.css'],
 })
 export class ArbreComponent implements OnInit {
-  tasks: Task[] = [];
+  tasks: any[] = [];
   isDragging: boolean = false;
   dragStartX: number = 0;
   dragStartY: number = 0;
   dragOffsetX: number = 0;
   dragOffsetY: number = 0;
+  data: any[] = [];
+  idUser: number = 1;
 
-  ngOnInit() {
+  async ngOnInit() {
+    await this.getArbre();
     this.setTask();
   }
 
-  onMouseDown(event: MouseEvent) {
-    this.isDragging = true;
-    this.dragStartX = event.clientX;
-    this.dragStartY = event.clientY;
-  }
-
-  onMouseMove(event: MouseEvent) {
-    if (this.isDragging) {
-      this.dragOffsetX = event.clientX - this.dragStartX;
-      this.dragOffsetY = event.clientY - this.dragStartY;
-      this.updateTasksPosition();
-    }
-  }
-
-  onMouseUp(event: MouseEvent) {
-    this.isDragging = false;
-  }
-
-  updateTasksPosition() {
-    this.tasks.forEach((task) => {
-      if (task.x && task.y) {
-        task.x += this.dragOffsetX;
-        task.y += this.dragOffsetY;
-      }
-    });
-    this.dragStartX += this.dragOffsetX;
-    this.dragStartY += this.dragOffsetY;
-    this.dragOffsetX = 0;
-    this.dragOffsetY = 0;
-  }
-
-  dependencies = [
-    { from: 1, to: 1 },
-    // { from: 4, to: 5 },
-    // { from: 1, to: 5 },
-    // { from: 2, to: 3 },
-    // { from: 1, to: 4 },
-  ];
-
-  texts = [
-    { text: 'Eau', id: 1 },
-    { text: 'Feu', id: 2 },
-    { text: 'Air', id: 3 },
-    { text: 'Terre', id: 4 },
-    // { text: 'Boue', id: 5 },
-    // { text: 'centre', id: 5 },
-  ];
+  dependencies: any[] = [];
 
   setTask() {
     const center = this.showSetCenter();
     if (center) {
       // console.log(center);
-
-      this.tasks = [
-        {
-          id: 1,
-          x: center.width + center.left - center.right / 2,
-          y: center.height + center.top - +center.bottom / 2 + 200,
-        },
-        {
-          id: 2,
-          x: center.width + center.left - center.right / 2 + 200,
-          y: center.height + center.top - +center.bottom / 2,
-        },
-        {
-          id: 3,
-          x: center.width + center.left - center.right / 2 - 200,
-          y: center.height + center.top - +center.bottom / 2,
-        },
-        {
-          id: 4,
-          x: center.width + center.left - center.right / 2,
-          y: center.height + center.top - +center.bottom / 2 - 200,
-        },
-        // {
-        //   id: 5,
-        //   x: center.width / 2,
-        //   y: center.height / 2,
-        // },
-      ];
+      for (let i = 0; i < 4; i++) {
+        for (let element of this.data[i].skills) {
+          this.tasks.push({
+            id: element.id,
+            x: element.x + center.width / 2,
+            y: element.y + center.height / 2,
+            text: element.title,
+          });
+          for (let par of element.parents) {
+            this.dependencies.push({
+              from: par,
+              to: element.id,
+            });
+          }
+        }
+      }
+      console.log(this.tasks);
     }
   }
 
@@ -120,5 +64,19 @@ export class ArbreComponent implements OnInit {
       return rect;
     }
     return;
+  }
+
+  async getArbre() {
+    try {
+      const resp = await axios.get(`${baseUrl}/skill/user/${this.idUser}`);
+      this.data = resp.data;
+      console.log(this.data);
+    } catch (error) {
+      alert(error);
+    }
+  }
+
+  getId() {
+    return 1;
   }
 }
