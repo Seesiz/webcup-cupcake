@@ -40,7 +40,7 @@ button {
 button {
   background-color: rgba(131, 131, 131, 0.326);
   border: 1px solid transparent;
-  border-radius: 2px;
+  border-radius: 20px;
   font-size: 1.71vh;
   position: relative;
   color: var(--primary);
@@ -85,6 +85,11 @@ header {
   background-color: transparent;
   backdrop-filter: blur(0px) !important;
   transform: rotate(-90deg);
+  border-bottom: 2px solid #fff;
+  border-radius: 0px;
+}
+.elite button:hover {
+  border: none;
   border-bottom: 2px solid #fff;
 }
 
