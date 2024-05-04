@@ -41,3 +41,5 @@ testem.log
 .DS_Store
 Thumbs.db
 *.json
+server/package-lock.json
+server/package.json
