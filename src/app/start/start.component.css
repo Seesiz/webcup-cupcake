@@ -33,3 +33,10 @@
   font-size: 8vw;
   color: var(--primary);
 }
+
+.home-text {
+  left: 0;
+  height: 100%;
+  width: 42%;
+  backdrop-filter: blur(10px);
+}
