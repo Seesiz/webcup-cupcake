@@ -255,3 +255,19 @@ alter table COMPETENCE_DERIVE add column x int default 0;
 alter table COMPETENCE_DERIVE add column y int default 0;
 alter table COMPETENCE_DERIVE add column color varchar(15) default '';
 
+CREATE TABLE leagues (
+     id INT PRIMARY KEY AUTO_INCREMENT,
+     nom VARCHAR(50) NOT NULL,
+     xp_min INT NOT NULL,
+     xp_max INT NOT NULL
+);
+INSERT INTO leagues (nom, xp_min, xp_max) VALUES
+  ('bronze', 0, 30),
+  ('argent', 31, 60),
+  ('or', 61, 90),
+  ('diamant', 91, 120),
+  ('titans', 121, 150),
+  ('titans+', 151, 9999);
+
+alter table utilisateur add league int references leagues(id);
+update utilisateur set league = 1 where 1 < 2;
