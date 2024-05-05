@@ -70,9 +70,39 @@ const getListePropositionsParPost = async (req, res) => {
     }
 }
 
+const troquerCompetence = async (request, response) => {
+    try {
+         // nous allons prendre les données de la requête (methode POST)
+        // nous allons prendre l'id de l'annonce et l'id de la proposition
+        const { idAnnonce, idProposition } = request.body;
+        // nous allons appeler la fonction troquerCompetence du service trocService
+        // nous allons lui passer les deux paramètres
+        // nous allons récupérer la réponse de la fonction
+        // nous allons renvoyer la réponse
+
+        // recuperons d'abord l'annonce pour voir si elle est toujours disponible
+        const annonce = await trocService.getAnnonceById(idAnnonce);
+        if (!annonce) {
+            console.log("Annonce introuvable");
+            return response.status(404).send({ message: 'Annonce introuvable' });
+        }
+        if (annonce.etat !== 0) {
+            console.log("Annonce terminé");
+            return response.status(400).send({ message: 'Annonce déjà traitée' });
+        }
+        const reponse = await trocService.troquerCompetence(idAnnonce, idProposition);
+        return response.status(200).send(reponse);
+    } catch (error) {
+        console.error('Erreur lors de l\'échange de compétence :', error);
+        return response.status(500).send({ message: 'Erreur lors de l\'échange de compétence' });
+    }
+   
+}
+
 module.exports = {
     getAllAnnonces,
     createPost,
     proposerAnnonce,
-    getListePropositionsParPost
+    getListePropositionsParPost,
+    troquerCompetence
 };

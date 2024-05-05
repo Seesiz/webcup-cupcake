@@ -1,0 +1,35 @@
+<section>
+  <div class="box-border form-box">
+    <div class="form-value">
+      <form action="">
+        <h2>Sign Up</h2>
+        <div class="input_box">
+          <input type="email" required name="nom" [(ngModel)]="formData.nom" />
+          <label for="">Firstname</label>
+        </div>
+        <div class="input_box">
+          <input type="email" required name="prenom" [(ngModel)]="formData.prenom" />
+          <label for="">Lastname</label>
+        </div>
+        <div class="input_box">
+          <input type="email" required name="email" [(ngModel)]="formData.email" />
+          <label for="">Email</label>
+        </div>
+        <div class="input_box">
+          <input type="password" required name="password" [(ngModel)]="formData.password" />
+          <label for="">Password</label>
+        </div>
+        <!--        <div class="forget">-->
+        <!--          <label for=""-->
+        <!--            ><span><input type="checkbox" />Remember me</span>-->
+        <!--            <a href="">Forget Password </a></label-->
+        <!--          >-->
+        <!--        </div>-->
+        <button (click)="signIn()">SIGN UP</button>
+        <div class="">
+          <p>You already have an account? <a href="/login">Sign In</a></p>
+        </div>
+      </form>
+    </div>
+  </div>
+</section>
