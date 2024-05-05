@@ -8,12 +8,13 @@ const username = 'cupcake_dba';
 const password = 'Batmèn203';
 
 const sequelize = new Sequelize(
-    database_name, 
-    username, 
-    password, 
+    database_name,
+    username,
+    password,
     {
         host: hostname,
-        dialect: 'mysql'
+        dialect: 'mysql',
+        logging: false
     }
 );
 

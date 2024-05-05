@@ -22,6 +22,8 @@ wss.on('connection', function connection(ws) {
         findOpponent(ws, utilisateursEnLigne)
       } else if (message.type === ':deck') {
         onDeck(message);
+      } else if (message.type === ':start') {
+        onStart(message)
       }
     }
   });
@@ -33,18 +35,39 @@ wss.on('connection', function connection(ws) {
   });
 });
 
+const onStart = (message) => {
+  console.log("on deck")
+  decideUser(message, (opponent_) => {
+      console.log("user1_", JSON.stringify(opponent_.user1.ws.user))
+      opponent_.user1.started = true
+      start(opponent_)
+    },
+    (opponent_) => {
+      opponent_.user2.started = true
+      start(opponent_)
+    })
+}
+
+const start = (opponent_) => {
+  if (opponent_.user1.started && opponent_.user2.started) {
+    opponent_.user2.ws.send(JSON.stringify({
+      type: ':start'
+    }))
+    opponent_.user1.ws.send(JSON.stringify({
+      type: ':start'
+    }))
+  }
+}
+
 const onDeck = (message) => {
   console.log("on deck")
-  try {
-    let opponent_ = opponents[message.key]
-    console.log("oppenent_", opponent_)
-    console.log("sender", message.sender)
-    if (opponent_.user1.ws.user.id === message.sender) {
+  decideUser(message, (opponent_) => {
       console.log("user1_", JSON.stringify(opponent_.user1.ws.user))
       opponent_.user1.skills = [
         ...opponent_.user1.skills,
         message.data.skill
       ]
+      opponent_.user1.started = opponent_.user1.skills.length >= 4;
       opponent_.user2.ws.send(JSON.stringify({
         type: ':deck',
         data: {
@@ -52,12 +75,15 @@ const onDeck = (message) => {
           reverse: message.data.reverse
         }
       }))
-    } else {
+      start(opponent_)
+  },
+  (opponent_) => {
       console.log("user2_", JSON.stringify(opponent_.user2.ws.user))
       opponent_.user2.skills = [
         ...opponent_.user2.skills,
         message.data.skill
       ]
+      opponent_.user2.started = opponent_.user2.skills.length >= 4;
       opponent_.user1.ws.send(JSON.stringify({
         type: ':deck',
         data: {
@@ -65,9 +91,22 @@ const onDeck = (message) => {
           reverse: message.data.reverse
         }
       }))
+      start(opponent_)
+  })
+}
+
+const decideUser = (message, user_1_action= (opponent_) => {}, user_2_action=(opponent_)=> {}) => {
+  try {
+    let opponent_ = opponents[message.key]
+    console.log("oppenent_", opponent_)
+    console.log("sender", message.sender)
+    if (opponent_.user1.ws.user.id === message.sender) {
+      user_1_action(opponent_)
+    } else {
+      user_2_action(opponent_)
     }
-  } catch (er) {
-    console.log(er)
+  } catch (err) {
+    console.log(err)
   }
 }
 
@@ -102,11 +141,13 @@ const findOpponent = (ws, utilisateursEnLigne) => {
         opponents[key] = {
           user1: {
             ws: ws,
-            skills: []
+            skills: [],
+            started: false
           },
           user2: {
             ws: opponent,
-            skills: []
+            skills: [],
+            started: false
           },
         }
         isBreak = true;
