@@ -238,4 +238,6 @@ export class LandingPageComponent implements AfterViewInit {
     this.isConnected = false;
     this.router.navigateByUrl('/login');
   }
+
+  partenaire: any[] = ['bg3.jpg'];
 }

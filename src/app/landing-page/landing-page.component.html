@@ -72,10 +72,7 @@
   >
     <span class="d-flex flex-row justify-content-between col-12">
       <b>{{ user.prenom }}</b>
-      <span>Lv.99</span>
-    </span>
-    <span id="exp">
-      <div class="bar" style="width: 90%"></div>
+      <span>Lvl.{{ user.league }}</span>
     </span>
     <button *ngIf="!load" (click)="logout()">Logout</button>
   </div>
@@ -149,7 +146,15 @@
   class="echoIndex position-absolute d-flex align-items-center justify-content-between"
   *ngIf="!load"
 >
-  <a [href]="'https://bff.ecoindex.fr/redirect/?url='+url" target="_blank">
-    <img [src]="'https://bff.ecoindex.fr/badge/?theme=dark&url='+url" alt="Ecoindex Badge" />
+  <a [href]="'https://bff.ecoindex.fr/redirect/?url=' + url" target="_blank">
+    <img
+      [src]="'https://bff.ecoindex.fr/badge/?theme=dark&url=' + url"
+      alt="Ecoindex Badge"
+    />
   </a>
+</div>
+<div class="partenaires position-absolute d-flex flex-row">
+  <div class="partenaire">
+    <img src="" alt="" height="100%" style="object-fit: cover" />
+  </div>
 </div>

@@ -185,18 +185,6 @@ header h5 .dot {
   border-radius: 5px;
 }
 
-#exp {
-  width: 100%;
-  border-radius: 20px;
-  overflow: hidden;
-  background-color: var(--secondary);
-}
-
-#exp .bar {
-  height: 10px;
-  background-color: var(--third);
-}
-
 .echoIndex {
   bottom: 2%;
   left: 50%;
@@ -213,4 +201,22 @@ header h5 .dot {
     transform: translate(-50%, 0%);
     opacity: 1;
   }
+}
+
+@keyframes moveSlide {
+  from {
+    transform: translateX(-100%);
+  }
+}
+
+.partenaires {
+  right: 10%;
+  top: 50%;
+  height: 50dvh;
+  transform: translateY(-50%);
+  overflow: hidden;
+}
+
+.partenaire {
+  animation: moveSlide 0.3s infinite;
 }
