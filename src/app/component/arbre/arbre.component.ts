@@ -99,7 +99,12 @@ export class ArbreComponent implements AfterViewInit {
   }
 
   getId() {
-    return 1;
+    const user = localStorage.getItem('userInfo');
+    if (user) {
+      const userData = JSON.parse(user);
+      return userData.id;
+    }
+    return -1;
   }
 
   changeFileName(text: string): string {

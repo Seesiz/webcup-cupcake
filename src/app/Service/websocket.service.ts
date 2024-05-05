@@ -9,17 +9,17 @@ export class WebSocketService {
 
   constructor() {}
 
-  connect(url: string): Observable<any> {
+  connect(url: string, data: any, messageCallBack: any): Observable<any> {
     return new Observable<any>((observer) => {
       this.socket = new WebSocket(url);
 
       this.socket.onopen = (event) => {
         console.log('WebSocket connected');
-        observer.next({ type: 'open', data: event });
+        this.send({ type: ':open', data: data });
       };
 
       this.socket.onmessage = (event) => {
-        observer.next({ type: 'message', data: JSON.parse(event.data) });
+        messageCallBack(JSON.parse(event.data));
       };
 
       this.socket.onerror = (event) => {

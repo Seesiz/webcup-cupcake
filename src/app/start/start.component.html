@@ -2,13 +2,122 @@
   class="content d-flex flex-row justify-content-start align-items-center"
   @fadeInAnimation
 >
-  <video #videoPlayer class="position-absolute" autoplay loop>
+  <video autoplay loop>
     <source src="../../assets/video/hero.mp4" type="video/mp4" />
     Your browser does not support the video tag.
   </video>
   <div class="p-2" *ngIf="showText && connected" @fadeInAnimation>
-    <button class="matchmacking p-2 px-4" (click)="connectSocket()">
-      <i class="fa-solid fa-arrow-left"></i> MATCHMAKING
+    <button
+      class="matchmacking p-2 px-4"
+      (click)="connectSocket(); wait = true"
+    >
+      <i class="fa-solid fa-arrow-left" *ngIf="!wait"></i>
+      <div class="spinner-border" role="status" *ngIf="wait">
+        <span class="sr-only">Loading...</span>
+      </div>
+      MATCHMAKING
     </button>
+  </div>
+  <div class="game" *ngIf="showGame" @fadeInAnimation>
+    <div *ngIf="!start" @fadeInAnimation>
+      <div
+        class="deck-choice-adve d-flex flex-row justify-content-center gap-2"
+      >
+        <div
+          class="karatra col-1 d-flex flex-column align-items-center"
+          *ngFor="let card of adveDeck"
+        >
+          <div class="col-6 w-100">
+            <img
+              [src]="'../../assets/img/' + changeFileName(card.title) + '.gif'"
+              alt=""
+              width="100%"
+              style="object-fit: cover"
+            />
+          </div>
+        </div>
+      </div>
+      <div
+        class="d-flex flex-column align-items-center gap-2 position-absolute top-50"
+        style="left: 50%; transform: translate(-50%, -50%)"
+      >
+        <div class="text-white">It's time to build your deck</div>
+        <div class="turn w-auto px-2" style="text-wrap: nowrap">
+          {{ turn ? "YOUR TURN" : "WAIT YOUR TURN" }}
+        </div>
+      </div>
+
+      <div class="deck-choice d-flex flex-row justify-content-center gap-2">
+        <div
+          class="karatra col-1 d-flex flex-column align-items-center"
+          *ngFor="let card of myDeck"
+          (click)="choseCard(card)"
+          [class.active]="!checkActive(card)"
+        >
+          <div class="col-6 w-100">
+            <img
+              [src]="'../../assets/img/' + changeFileName(card.title) + '.gif'"
+              alt=""
+              width="100%"
+              style="object-fit: cover"
+            />
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="scene" *ngIf="start" @fadeInAnimation>
+      <div
+        class="deck-choice-adve d-flex flex-row justify-content-center gap-2"
+      >
+        <div
+          class="karatra col-1 d-flex flex-column align-items-center"
+          *ngFor="let card of adveDeck"
+        >
+          <div class="col-6 w-100">
+            <img
+              [src]="'../../assets/img/' + changeFileName(card.title) + '.gif'"
+              alt=""
+              width="100%"
+              style="object-fit: cover"
+            />
+          </div>
+        </div>
+        <div
+          class="pvAdve position-absolute"
+          [style]="{ width: '60%', height: '10px' }"
+        >
+          <div class="bar" style="width: 60%"></div>
+        </div>
+      </div>
+      <div
+        class="d-flex col-4 justify-content-between position-absolute"
+        style="top: 50%; left: 50%; transform: translate(-50%, -50%)"
+      >
+        <div class="zone zone1"></div>
+        <div class="zone zone2"></div>
+      </div>
+      <div class="deck-choice d-flex flex-row justify-content-center gap-2">
+        <div
+          class="pv position-absolute"
+          [style]="{ width: '60%', height: '10px' }"
+        >
+          <div class="bar" style="width: 60%"></div>
+        </div>
+        <div
+          class="karatra col-1 d-flex flex-column align-items-center"
+          *ngFor="let card of chooseCards"
+        >
+          <div class="col-6 w-100">
+            <img
+              [src]="'../../assets/img/' + changeFileName(card.title) + '.gif'"
+              alt=""
+              width="100%"
+              style="object-fit: cover"
+              [class.active]="!checkActive(card)"
+            />
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
 </div>
