@@ -7,6 +7,7 @@
         <div class="text">
           <h1>I wanna give this</h1>
           <p>Those are the propositions</p>
+          <button (click)="showProposition()" *ngIf="!wantKnown">Offers</button>
         </div>
       </div>
       <div class="need">
@@ -17,32 +18,50 @@
         <img src="../../../assets/img/cover/3.jpg" class="pics" />
       </div>
     </div>
-    <button (click)="isPageOne = !isPageOne">Propositions</button>
+    <button (click)="isPageOne = !isPageOne">Offers</button>
+  </div>
+  <div
+    class="modal d-flex flex-column position-fixed"
+    *ngIf="showModal"
+    @fadeInAnimation
+  >
+    <header class="d-flex flex-row justify-content-between p-2 px-4">
+      <h1>Proposition</h1>
+      <button (click)="showModal = false" class="px-2">X</button>
+    </header>
+    <select [(ngModel)]="selectedItemId" (change)="selectWant(selectedItemId)">
+      <option *ngFor="let item of data" [value]="item.id">
+        {{ item.text }}
+      </option>
+    </select>
   </div>
   <div class="page2" [@fadeToLeft]="isPageOne ? 'load' : 'exit'">
     <div class="proposition">
       <div class="title">
-        <h1>Propositions</h1>
+        <h1>Offers</h1>
         <p>In this section you can see the propositions peoples proposed</p>
       </div>
       <div class="list">
         <div class="arrow">
           <i class="fa-solid fa-chevron-left"></i>
         </div>
-        <div class="sideProposition">
+        <!-- <div class="sideProposition">
           <img src="../../../assets/img/cover/1.jpg" class="pics" />
-        </div>
+        </div> -->
         <div class="aProposition">
           <img src="../../../assets/img/cover/1.jpg" class="pics" />
         </div>
-        <div class="sideProposition">
+        <!-- <div class="sideProposition">
           <img src="../../../assets/img/cover/1.jpg" class="pics" />
-        </div>
+        </div> -->
         <div class="arrow">
           <i class="fa-solid fa-chevron-right"></i>
         </div>
       </div>
     </div>
-    <button (click)="isPageOne = !isPageOne">Publication</button>
+    <div class="div">
+      <button (click)="isPageOne = !isPageOne">Publication</button>
+      <button (click)="valider()">Valider</button>
+    </div>
   </div>
 </main>

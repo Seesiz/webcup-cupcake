@@ -8,7 +8,7 @@ import { TeamComponent } from './info/team/team.component';
 import { LoginComponent } from './component/login/login.component';
 import { ArbreComponent } from './component/arbre/arbre.component';
 import { TrocComponent } from './component/troc/troc.component';
-import {InscriptionComponent} from "./component/inscription/inscription.component";
+import { InscriptionComponent } from './component/inscription/inscription.component';
 
 const routes: Routes = [
   {
@@ -54,9 +54,9 @@ const routes: Routes = [
             component: ArbreComponent,
           },
           {
-            path: 'troc',
+            path: 'troc/:id',
             component: TrocComponent,
-          }
+          },
         ],
       },
     ],

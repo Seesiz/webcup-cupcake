@@ -5,7 +5,10 @@ import {
   transition,
   animate,
 } from '@angular/animations';
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
+import axios from 'axios';
+import { baseUrl } from '../../app.component';
 
 const toLeft = trigger('fadeToLeft', [
   state(
@@ -28,6 +31,45 @@ const toLeft = trigger('fadeToLeft', [
   styleUrl: './troc.component.css',
   animations: [toLeft],
 })
-export class TrocComponent {
+export class TrocComponent implements OnInit {
   isPageOne: boolean = true;
+  need: number | undefined;
+  trocId: number | undefined;
+  showModal: boolean = false;
+  idUser: number = 1;
+  data: any[] = [];
+  wantKnown: boolean = false;
+  selectedItemId: any;
+  showProposition() {
+    this.showModal = true;
+  }
+  selectWant(itemId: any) {
+    console.log("ID de l'élément sélectionné:", itemId);
+    this.showModal = false;
+    this.wantKnown = true;
+  }
+
+  constructor(private router: Router, private route: ActivatedRoute) {}
+
+  ngOnInit(): void {
+    this.route.params.subscribe((params) => {
+      this.trocId = params['id'];
+      console.log('ID du troc:', this.trocId);
+    });
+    const user = localStorage.getItem('userInfo');
+    if (user) {
+      this.idUser = JSON.parse(user).id;
+    }
+    this.getArbre();
+    console.log(this.data);
+  }
+  valider() {}
+  async getArbre() {
+    try {
+      const resp = await axios.get(`${baseUrl}/skill/user/${this.idUser}`);
+      this.data = resp.data;
+    } catch (error) {
+      alert(error);
+    }
+  }
 }

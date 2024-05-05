@@ -142,4 +142,24 @@ main video {
 .arrow i {
   color: #fff;
   font-size: 3em;
+  padding: 15px;
+}
+.modal {
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 50%;
+  height: 60%;
+  background-color: var(--primary);
+  border-radius: 20px;
+  color: #000;
+}
+.modal header button {
+  border: none;
+  border-radius: 10px;
+  color: var(--primary);
+}
+.div {
+  display: flex;
+  gap: 15px;
 }
