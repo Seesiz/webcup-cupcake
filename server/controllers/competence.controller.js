@@ -1,4 +1,4 @@
-const { getUserSkillAndPrepare, getSkillRoutes } = require('../services/competence.services');
+const { getUserSkillAndPrepare, getSkillRoutes, addCompetenceUser } = require('../services/competence.services');
 
 const getCompetenceRacine = async (req, res) => {
     const competenceRacine = await getSkillRoutes();
