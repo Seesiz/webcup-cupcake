@@ -60,7 +60,7 @@ export class StartComponent {
   }
 
   ngOnInit() {
-    const userData = localStorage.getItem('UserInfo');
+    const userData = localStorage.getItem('userInfo');
     if (userData) {
       this.dataUser = JSON.parse(userData);
       this.connected = true;

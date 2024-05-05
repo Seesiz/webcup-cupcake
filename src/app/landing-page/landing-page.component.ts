@@ -118,7 +118,7 @@ export class LandingPageComponent implements AfterViewInit {
   }
 
   ngOnInit(): void {
-    const session = localStorage.getItem('UserInfo');
+    const session = localStorage.getItem('userInfo');
     if (session) {
       this.user = JSON.parse(session);
       this.isConnected = true;
@@ -235,5 +235,11 @@ export class LandingPageComponent implements AfterViewInit {
         this.showOnde = !this.showOnde;
       });
     }
+  }
+
+  logout() {
+    localStorage.removeItem('userInfo');
+    this.isConnected = false;
+    this.router.navigateByUrl('/login');
   }
 }

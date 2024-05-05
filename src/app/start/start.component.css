@@ -36,7 +36,7 @@
 }
 
 .matchmacking {
-  background: linear-gradient(to bottom, var(--third), #ff0e0e);
+  background: linear-gradient(to bottom, var(--third), #ffd70e);
   font-size: 7vh;
   color: var(--primary);
   position: absolute;

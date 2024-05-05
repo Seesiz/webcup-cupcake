@@ -77,7 +77,7 @@
     <span id="exp">
       <div class="bar" style="width: 90%"></div>
     </span>
-    <button *ngIf="!load">Logout</button>
+    <button *ngIf="!load" (click)="logout()">Logout</button>
   </div>
 </header>
 <div class="landing">
