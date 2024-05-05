@@ -30,6 +30,9 @@ const User = sequelize.define('User', {
   date_inscription: {
     type: DataTypes.DATE,
     defaultValue: new Date()
+  },
+  league: {
+    type: DataTypes.INTEGER,
   }
 }, {
   tableName: 'utilisateur',
