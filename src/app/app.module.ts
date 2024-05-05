@@ -15,6 +15,7 @@ import { FormsModule } from '@angular/forms';
 import { TrocComponent } from './component/troc/troc.component';
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
 import { CdkDrag } from '@angular/cdk/drag-drop';
+import { InscriptionComponent } from './component/inscription/inscription.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -25,6 +26,7 @@ import { CdkDrag } from '@angular/cdk/drag-drop';
     LoginComponent,
     ArbreComponent,
     TrocComponent,
+    InscriptionComponent,
   ],
   imports: [
     BrowserModule,
