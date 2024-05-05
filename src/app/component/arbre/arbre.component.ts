@@ -4,6 +4,7 @@ import { baseUrl } from '../../app.component';
 import { fadeInAnimation } from '../../start/start.component';
 import { TextService } from '../../Service/text.service';
 import { MouseService } from '../../Service/mouse.service';
+import { GenericService } from '../../Service/generic.service';
 
 @Component({
   selector: 'app-arbre',
@@ -24,6 +25,8 @@ export class ArbreComponent implements AfterViewInit {
   idUser: number = 1;
   showModal: boolean = false;
   selected: any = {};
+
+
   enter() {
     this.mouseService.enter();
   }
@@ -34,7 +37,8 @@ export class ArbreComponent implements AfterViewInit {
 
   constructor(
     private sharedService: TextService,
-    private mouseService: MouseService
+    private mouseService: MouseService,
+    private genericService: GenericService
   ) {
     this.sharedService.showText$.subscribe((value) => {
       this.showText = value;
@@ -152,5 +156,21 @@ export class ArbreComponent implements AfterViewInit {
       left: '0px',
       transformOrigin: '0 0',
     };
+  }
+
+  async unlockSkill (skillId: number) {
+    console.log(this.selected);
+    
+    const userStr = localStorage.getItem("userInfo");
+    if (userStr) {
+      const user = JSON.parse(userStr);
+      const userId = user.id;
+      const result = await this.genericService.post("skill/unlock", {
+        idUtilisateur: userId,
+        idCompetence: skillId
+      });
+      console.log(result);
+
+    }
   }
 }

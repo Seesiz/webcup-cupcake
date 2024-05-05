@@ -8,7 +8,7 @@
   </video>
   <div class="p-2" *ngIf="showText && connected" @fadeInAnimation>
     <button class="matchmacking p-2 px-4" (click)="connectSocket()">
-      MATCHMAKING
+      <i class="fa-solid fa-arrow-left"></i> MATCHMAKING
     </button>
   </div>
   <div class="game" *ngIf="showGame" @fadeInAnimation>

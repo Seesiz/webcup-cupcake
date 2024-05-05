@@ -106,6 +106,7 @@ export class LandingPageComponent implements AfterViewInit {
   showText: boolean = false;
   isConnected: boolean = false;
   user: any = {};
+  url = 'https://cupcake.madagascar.webcup.hodi.host/front';
 
   constructor(
     private router: Router,
@@ -159,11 +160,6 @@ export class LandingPageComponent implements AfterViewInit {
       circle.style.left = x - this.bounds / 2 + 'px';
       circle.style.top = y - this.bounds / 2 + 'px';
     };
-
-    setTimeout(() => {
-      this.load = true;
-      this.sharedService.setShowText(this.load);
-    });
   }
 
   makeShowText() {

@@ -109,6 +109,7 @@
       (mouseleave)="onExit(); hoverShowExit('/home/started', '/home/arbre')"
       (click)="navigate('/home/arbre'); makeShowText(); onExit()"
       [class.active]="link === '/home/arbre'"
+      *ngIf="isConnected"
     >
       Skill tree
       <span class="bottom"></span>
@@ -143,4 +144,12 @@
   >
     Feature
   </button>
+</div>
+<div
+  class="echoIndex position-absolute d-flex align-items-center justify-content-between"
+  *ngIf="!load"
+>
+  <a [href]="'https://bff.ecoindex.fr/redirect/?url='+url" target="_blank">
+    <img [src]="'https://bff.ecoindex.fr/badge/?theme=dark&url='+url" alt="Ecoindex Badge" />
+  </a>
 </div>
