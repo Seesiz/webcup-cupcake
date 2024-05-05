@@ -80,6 +80,7 @@
             class="btn"
             *ngIf="this.selected.unblockable"
             style="background-color: var(--secondary); color: var(--primary)"
+            (click)="unlockSkill(this.selected.id)"
           >
             Unlock
           </button>
