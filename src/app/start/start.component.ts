@@ -50,6 +50,7 @@ export class StartComponent {
   showText: boolean = false;
   dataUser: any = {};
   connected: boolean = false;
+
   constructor(
     private sharedService: TextService,
     private webSocket: WebSocketService
