@@ -10,3 +10,4 @@ import { StartComponent } from './start/start.component';
 export class AppComponent {}
 
 export const baseUrl = 'http://10.200.215.76:3000';
+export const baseSocket = 'ws://10.200.215.76:8080';

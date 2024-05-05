@@ -8,6 +8,8 @@ import {
 import { Component } from '@angular/core';
 
 import { TextService } from '../Service/text.service';
+import { WebSocketService } from '../Service/websocket.service';
+import { baseSocket } from '../app.component';
 export const fadeInAnimation = trigger('fadeInAnimation', [
   transition(':enter', [
     animate(
@@ -46,10 +48,28 @@ const lendLeft = trigger('lendLeft', [
 })
 export class StartComponent {
   showText: boolean = false;
-
-  constructor(private sharedService: TextService) {
+  dataUser: any = {};
+  connected: boolean = false;
+  constructor(
+    private sharedService: TextService,
+    private webSocket: WebSocketService
+  ) {
     this.sharedService.showText$.subscribe((value) => {
       this.showText = value;
+    });
+  }
+
+  ngOnInit() {
+    const userData = localStorage.getItem('UserInfo');
+    if (userData) {
+      this.dataUser = JSON.parse(userData);
+      this.connected = true;
+    }
+  }
+
+  connectSocket() {
+    this.webSocket.connect(baseSocket).subscribe(() => {
+      this.webSocket.send({ type: ':open', data: this.dataUser });
     });
   }
 }

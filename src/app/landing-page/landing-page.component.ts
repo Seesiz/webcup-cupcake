@@ -104,7 +104,8 @@ export class LandingPageComponent implements AfterViewInit {
   ondePosition: any = { x: 0, y: 0 };
   @ViewChild('circle') circleRef: ElementRef | undefined;
   showText: boolean = false;
-  isConnected: boolean = true;
+  isConnected: boolean = false;
+  user: any = {};
 
   constructor(
     private router: Router,
@@ -117,6 +118,13 @@ export class LandingPageComponent implements AfterViewInit {
   }
 
   ngOnInit(): void {
+    const session = localStorage.getItem('UserInfo');
+    if (session) {
+      this.user = JSON.parse(session);
+      this.isConnected = true;
+    } else {
+      this.isConnected = false;
+    }
     this.mouseService.onEnter().subscribe(() => {
       this.onEnter();
     });
