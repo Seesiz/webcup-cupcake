@@ -48,6 +48,7 @@ const lendLeft = trigger('lendLeft', [
   animations: [fadeInAnimation, lendLeft, lendRight],
 })
 export class StartComponent {
+  start: boolean = false;
   showText: boolean = false;
   dataUser: any = {};
   connected: boolean = false;
@@ -58,6 +59,7 @@ export class StartComponent {
   data: any = {};
   myDeck: any[] = [];
   chooseCards: any[] = [];
+  wait = false;
   constructor(
     private sharedService: TextService,
     private webSocket: WebSocketService
@@ -102,7 +104,10 @@ export class StartComponent {
   }
 
   choseCard = (card: any) => {
-    if (this.chooseCards.length < 4 && this.turn) {
+    let results = this.chooseCards.filter((card_: any) => {
+      return card_.id === card.id;
+    });
+    if (this.chooseCards.length < 4 && this.turn && results.length === 0) {
       this.chooseCards.push(card);
       this.webSocket.send(this.prepareParams(card));
     }
@@ -142,6 +147,8 @@ export class StartComponent {
           this.onOpen(data);
         } else if (data.type === ':deck') {
           this.onDeck(data);
+        } else if (data.type === ':start') {
+          this.start = true;
         }
       })
       .subscribe();

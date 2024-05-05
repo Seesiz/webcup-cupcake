@@ -6,9 +6,7 @@
 }
 
 .content video {
-  position: absolute;
-  top: 0;
-  left: 0;
+  position: fixed;
   width: 100%;
   height: 100%;
   object-fit: cover;
@@ -21,7 +19,6 @@
 
 .showText button {
   background: transparent;
-  /* padding: 10px 20px; */
   border: 2px solid white;
   border-radius: 40px;
   color: white;
@@ -43,12 +40,13 @@
   bottom: 2%;
   right: -20%;
   border: 2px solid #fff;
-  border-radius: 20px;
+  border-radius: 20px 0px 0px 20px;
   backdrop-filter: blur(10px);
   display: flex;
   gap: 20px;
   justify-content: center;
   align-items: center;
+  border-right: none;
 }
 .matchmacking button {
   background: transparent;
@@ -105,4 +103,36 @@
   border-radius: 20px;
   color: var(--primary);
   font-size: 1em;
+}
+
+.zone {
+  border: 5px solid var(--third);
+  height: 5em;
+  width: 5em;
+  border-radius: 5px;
+}
+
+.pv,
+.pvAdve {
+  background-color: rgba(0, 255, 0, 0.382);
+  border-radius: 20px;
+  top: 0;
+  left: 50%;
+  transform: translate(-50%, -150%);
+  overflow: hidden;
+}
+
+.pvAdve {
+  bottom: 0;
+  top: auto;
+  background-color: rgba(254, 25, 25, 0.381);
+  transform: translate(-50%, 150%);
+}
+
+.pv .bar {
+  height: 100%;
+  background-color: rgb(0, 255, 0);
+}
+.pvAdve .bar {
+  background-color: rgb(254, 25, 25);
 }

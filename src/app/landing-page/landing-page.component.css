@@ -198,19 +198,19 @@ header h5 .dot {
 }
 
 .echoIndex {
-  top: 50%;
-  right: 10%;
-  transform: translate(0%, -50%);
+  bottom: 2%;
+  left: 50%;
+  transform: translate(-50%, 0%);
   animation: showEcho 0.6s forwards;
   z-index: 9;
 }
 @keyframes showEcho {
   from {
-    transform: translate(0% -50%);
+    transform: translate(-50%, 100%);
     opacity: 0;
   }
   to {
-    transform: translate(-100%, -50%);
+    transform: translate(-50%, 0%);
     opacity: 1;
   }
 }
