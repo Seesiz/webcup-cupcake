@@ -11,4 +11,46 @@
       MATCHMAKING
     </button>
   </div>
+  <div class="game" *ngIf="showGame" @fadeInAnimation>
+    <div class="deck-choice-adve d-flex flex-row justify-content-center gap-2">
+      <div
+        class="karatra col-1 d-flex flex-column align-items-center"
+        *ngFor="let card of adveDeck"
+        (click)="choseCard(card)"
+        [class.active]="!checkActive(card)"
+      >
+        <div class="col-6 w-100">
+          <img
+            [src]="'../../assets/img/' + changeFileName(card.title) + '.gif'"
+            alt=""
+            width="100%"
+            style="object-fit: cover"
+          />
+        </div>
+      </div>
+    </div>
+    <div
+      class="position-absolute turn top-50 px-2"
+      style="left: 50%; transform: translate(-50%, -50%)"
+    >
+      {{ turn ? "YOUR TURN" : "WAIT YOUR TURN" }}
+    </div>
+    <div class="deck-choice d-flex flex-row justify-content-center gap-2">
+      <div
+        class="karatra col-1 d-flex flex-column align-items-center"
+        *ngFor="let card of myDeck"
+        (click)="choseCard(card)"
+        [class.active]="!checkActive(card)"
+      >
+        <div class="col-6 w-100">
+          <img
+            [src]="'../../assets/img/' + changeFileName(card.title) + '.gif'"
+            alt=""
+            width="100%"
+            style="object-fit: cover"
+          />
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
