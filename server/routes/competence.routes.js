@@ -1,5 +1,5 @@
 var express = require('express');
-const { getCompetenceUser, getCompetenceRacine } = require('../controllers/competence.controller');
+const { getCompetenceUser, getCompetenceRacine, debloquerCompetence } = require('../controllers/competence.controller');
 var router = express.Router();
 
 /* GET home page. */
