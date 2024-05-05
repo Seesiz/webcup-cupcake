@@ -22,7 +22,7 @@
       class="skill position-absolute p-1"
       (mouseenter)="enter()"
       (mouseleave)="exit()"
-      (click)="task.blocked ? getProposition() : ''"
+      (click)="task.blocked ? getProposition(task) : ''"
       [style]="{
         left: task.x + 'px',
         top: task.y + 'px',
@@ -53,7 +53,38 @@
   >
     <header class="d-flex flex-row justify-content-between p-2 px-4">
       <b>Proposition</b>
-      <button (click)="showModal = false">X</button>
+      <button (click)="showModal = false" class="px-2">X</button>
     </header>
+    <section class="d-flex flex-row align-items-start">
+      <div class="col-6">
+        <img
+          [src]="'../../../assets/img/' + this.selected.file + '.gif'"
+          alt=""
+          height="100%"
+          width="100%"
+        />
+      </div>
+      <div class="d-flex flex-column col-6 justify-content-start p-2">
+        <b>{{ this.selected.text }}</b>
+        <span>{{ this.selected.description }}</span>
+        <div class="">
+          <button
+            class="btn"
+            routerLink="/home/troc"
+            *ngIf="!this.selected.unblockable"
+            style="background-color: var(--secondary); color: var(--primary)"
+          >
+            Barter
+          </button>
+          <button
+            class="btn"
+            *ngIf="this.selected.unblockable"
+            style="background-color: var(--secondary); color: var(--primary)"
+          >
+            Unlock
+          </button>
+        </div>
+      </div>
+    </section>
   </div>
 </div>

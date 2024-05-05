@@ -33,3 +33,14 @@
   left: 50%;
   transform: translateX(-50%);
 }
+
+.matchmacking {
+  background-color: var(--third);
+  font-size: 7vh;
+  color: var(--primary);
+  position: absolute;
+  bottom: 2%;
+  right: 2%;
+  border: none;
+  border-radius: 10px;
+}

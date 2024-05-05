@@ -9,7 +9,7 @@
   --primary-darker: rgba(255, 255, 255, 0.482);
   --secondary: #121212;
   --secondary-darker: #757575;
-  --third: #fffb2b;
+  --third: #ff2b2b;
 }
 
 * {
@@ -58,5 +58,11 @@ body {
   color: var(--secondary);
 }
 
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+html,
+body {
+  height: 100%;
+}
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}

@@ -23,6 +23,7 @@ export class ArbreComponent implements AfterViewInit {
   data: any[] = [];
   idUser: number = 1;
   showModal: boolean = false;
+  selected: any = {};
   enter() {
     this.mouseService.enter();
   }
@@ -106,8 +107,9 @@ export class ArbreComponent implements AfterViewInit {
     return fileName;
   }
 
-  getProposition() {
+  getProposition(select: any) {
     this.showModal = true;
+    this.selected = select;
   }
 
   getLineStyle(line: any): any {
