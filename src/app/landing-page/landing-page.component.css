@@ -179,5 +179,20 @@ header h5 .dot {
   font-size: 19vh;
 }
 
-.page {
+.userInterface {
+  background-color: rgba(131, 131, 131, 0.326);
+  backdrop-filter: blur(10px);
+  border-radius: 5px;
+}
+
+#exp {
+  width: 100%;
+  border-radius: 20px;
+  overflow: hidden;
+  background-color: var(--secondary);
+}
+
+#exp .bar {
+  height: 10px;
+  background-color: var(--third);
 }

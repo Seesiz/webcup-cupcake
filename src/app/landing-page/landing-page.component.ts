@@ -104,7 +104,7 @@ export class LandingPageComponent implements AfterViewInit {
   ondePosition: any = { x: 0, y: 0 };
   @ViewChild('circle') circleRef: ElementRef | undefined;
   showText: boolean = false;
-  isConnected: boolean = false;
+  isConnected: boolean = true;
 
   constructor(
     private router: Router,
