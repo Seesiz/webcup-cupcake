@@ -4,7 +4,7 @@ const UtilisateurCompetenceTyped = require("../models/UserCompetenceTyped.model"
 const CompetenceLink = require("../models/CompetenceLink.model");
 const User = require("../models/User.model");
 const UserXp = require("../models/UserXp.model");
-const {where} = require("sequelize");
+const UtilisateurCompetence = require("../models/UserCompetence.model");
 
 
 const getSkillRoutes = async () => {
@@ -138,11 +138,41 @@ const getUserSkillAndPrepare = async (userId) => {
     return result;
 }
 
+// Créons une fonction addCompetenceUser pour ajouter une compétence à un utilisateur
+// la fonction prendra en argument l'id de l'utilisateur et l'id de la compétence
+// et retournera la compétence ajoutée
+const addCompetenceUser = async (userId, skillId) => {
+  // on vérifie si l'utilisateur a déjà la compétence dans la base de données
+  // Si il l'a déjà, on retournera cette cette information, sinon on ajoutera la compétence à l'utilisateur
+  return await UtilisateurCompetence.findOrCreate({
+    where: {
+      id_utilisateur: userId,
+      id_competence: skillId
+    }
+  });
+}
+
+// Créons une fonction removeCompetenceUser pour supprimer une compétence à un utilisateur
+// la fonction prendra en argument l'id de l'utilisateur et l'id de la compétence
+// et retournera la compétence supprimée
+const removeCompetenceUser = async (userId, skillId) => {
+  // on vérifie si l'utilisateur a déjà la compétence dans la base de données
+  // Si il l'a déjà, on la supprimera, sinon on return null
+  return await UtilisateurCompetence.destroy({
+    where: {
+      id_utilisateur: userId,
+      id_competence: skillId
+    }
+  });
+}
+
 module.exports = {
     getUserSkillAndPrepare,
     getSkillDerived,
     getSkillRoutes,
     getUserSkill,
-    getUserSkillsByRoute
+    getUserSkillsByRoute,
+    addCompetenceUser,
+    removeCompetenceUser
 }
 

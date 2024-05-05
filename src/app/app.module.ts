@@ -13,6 +13,7 @@ import { LoginComponent } from './component/login/login.component';
 import { ArbreComponent } from './component/arbre/arbre.component';
 import { FormsModule } from '@angular/forms';
 import { TrocComponent } from './component/troc/troc.component';
+import { InscriptionComponent } from './component/inscription/inscription.component';
 
 @NgModule({
   declarations: [
@@ -24,6 +25,7 @@ import { TrocComponent } from './component/troc/troc.component';
     LoginComponent,
     ArbreComponent,
     TrocComponent,
+    InscriptionComponent,
   ],
   imports: [
     BrowserModule,

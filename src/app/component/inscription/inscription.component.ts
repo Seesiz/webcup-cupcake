@@ -3,24 +3,25 @@ import {GenericService} from "../../Service/generic.service";
 import {Router} from "@angular/router";
 
 @Component({
-  selector: 'app-login',
-  templateUrl: './login.component.html',
-  styleUrl: './login.component.css'
+  selector: 'app-inscription',
+  templateUrl: './inscription.component.html',
+  styleUrl: './inscription.component.css'
 })
-export class LoginComponent {
-
+export class InscriptionComponent {
 
   constructor(private apiService: GenericService,
               private router: Router) {
   }
 
   formData:any={
-    login: "admin@gmail.com",
-    password: "password"
+    nom: "",
+    prenom: "",
+    email: "",
+    password: ""
   };
 
-  async login () {
-    const result = await this.apiService.post("auth/login", this.formData);
+  async signIn () {
+    const result = await this.apiService.post("auth/register", this.formData);
     localStorage.setItem("userInfo", JSON.stringify(result.data));
     this.router.navigateByUrl("/home/started");
   }

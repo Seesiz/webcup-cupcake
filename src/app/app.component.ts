@@ -9,4 +9,6 @@ import { StartComponent } from './start/start.component';
 })
 export class AppComponent {}
 
-export const baseUrl = 'https://cupcake.madagascar.webcup.hodi.host/backend';
+//export const baseUrl = 'https://cupcake.madagascar.webcup.hodi.host/backend';
+export const baseUrl = 'http://localhost:3000';
+

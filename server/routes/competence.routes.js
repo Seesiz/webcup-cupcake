@@ -7,4 +7,6 @@ router.get('/', getCompetenceRacine);
 
 router.get('/user/:id', getCompetenceUser);
 
+router.post('/unlock', debloquerCompetence);
+
 module.exports = router;

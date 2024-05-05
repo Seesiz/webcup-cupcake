@@ -1,5 +1,5 @@
 var express = require('express');
-const { authentifierUser } = require('../controllers/authentification.controller');
+const { authentifierUser, registerUser} = require('../controllers/authentification.controller');
 var router = express.Router();
 
 /* GET home page. */
@@ -8,5 +8,6 @@ router.get('/', function(req, res, next) {
 });
 
 router.post('/login', authentifierUser);
+router.post('/register', registerUser);
 
 module.exports = router;
