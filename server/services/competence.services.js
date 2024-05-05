@@ -96,19 +96,19 @@ const getUserXp = async (user) => {
 }
 
 const prepareSkillParent = async (skill, userXp) => {
-  console.log("search skill parent")
-  console.log("skill", skill)
+  // console.log("search skill parent")
+  // console.log("skill", skill)
   let results = await CompetenceLink.findAll({
     where : {
       child: skill.id
     }
   })
-  console.log("found results")
+  // console.log("found results")
   let parents = results.map(result => result.parent)
   let maxXp = results.reduce((max, current) => {
     return Math.max(max, current.xp_required);
   }, 0);
-  console.log("maxXp: " + maxXp);
+  // console.log("maxXp: " + maxXp);
   return {
     skill : {
       ...skill,
@@ -126,7 +126,7 @@ const getUserSkillAndPrepare = async (userId) => {
         id : userId
       }
     });
-    console.log("userid", user.id);
+    // console.log("userid", user.id);
     for (let i = 0; i < skillRoutes.length; i++) {
 
         let skills = await getUserSkillsByRoute(user, skillRoutes[i].id);
@@ -166,6 +166,44 @@ const removeCompetenceUser = async (userId, skillId) => {
   });
 }
 
+const getBasicCompetence = async () => {
+  return await CompetenceDerive.findAll({
+    where: {
+      ordre: 0
+    }
+  });
+}
+
+const initCompetence = async (userId) => {
+  const listCompetenceBase = await getBasicCompetence();
+  // console.log("list comp", listCompetenceBase.length)
+  let result = [];
+  for (let index = 0; index < listCompetenceBase.length; index++) {
+    let todo = await addCompetenceUser(userId, listCompetenceBase[index].id);
+    result = [
+      ...result,
+      todo
+    ];
+  }
+  // console.log("result", result.length);
+  return result;
+}
+
+const addXpUser = async (userId, xp, xp_plus, date_insertion = new Date()) => {
+  const newXp = await UserXp.create({
+    userId: userId,
+    xp: xp,
+    xpPlus: xp_plus,
+    date_insertion: date_insertion
+  });
+  return newXp;
+}
+
+const initXpUser = async (userId) => {
+  return await addXpUser(userId, 5, 5, new Date())
+}
+
+
 module.exports = {
     getUserSkillAndPrepare,
     getSkillDerived,
@@ -173,6 +211,10 @@ module.exports = {
     getUserSkill,
     getUserSkillsByRoute,
     addCompetenceUser,
-    removeCompetenceUser
+    removeCompetenceUser,
+    getBasicCompetence,
+    initCompetence,
+    addXpUser,
+    initXpUser
 }
 

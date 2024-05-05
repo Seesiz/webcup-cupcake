@@ -34,7 +34,8 @@ const registerUser = async (nom, prenom, email, password) => {
             nom: nom,
             prenom: prenom,
             email: email,
-            motdepasse: password
+            motdepasse: password,
+            league: 1
         });
 
         return user; // Retourne l'utilisateur créé
